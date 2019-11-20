@@ -1,0 +1,47 @@
+.headline {
+    margin-top: 100px;
+    font-size: 45px;
+}
+
+.bAturWisata {
+    margin-top: 10px;
+    font-size: 25px;
+}
+
+.g_maps {
+    width: 400px;
+    height: 400px;
+}
+
+.maps {
+    font-size: 20px;
+    margin-top: 200px;
+    text-align: right;
+}
+
+.header_space {
+    margin-right: 10px;
+}
+
+.definition {
+    color: white;
+    height: 300px;
+    margin-top: 100px;
+    text-align: center;
+    background-color: green;
+}
+
+.def_title {
+    padding-top: 50px;
+    font-size: 35px;
+}
+
+.def_content {
+    padding-top: 10px;
+    font-size: 25px;
+}
+
+.about_title {
+    font-weight: bold;
+    font-size: 20px;
+}

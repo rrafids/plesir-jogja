@@ -12,5 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('places', 'PlacesController'); 
+
+// Route::get('Places.index', 'LiveSearchController@index');
+// Route::get('Places/action', 'LiveSearchController@action')->name('Places.action');
