@@ -4,6 +4,6 @@
 @section('navbar')
     @parent
     <div class="headline">
-        Cari, beli dan Atur Wisatamu di Jogja!
+        qwfqwfkqwkfqw
     </div>
 @endsection
