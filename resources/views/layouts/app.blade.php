@@ -31,8 +31,8 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #137827">
-            <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #245B43">
+            
                 <a class="navbar-brand" href="{{ url('/') }}" style="color: white; font-size: 20px;">
                     <i class="location arrow icon"></i>
                     <b> {{ config('apps.name', 'PlesirJogja.com') }} </b>
@@ -43,40 +43,18 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-                        <div class="header_space">
-                                <li class="nav-item">
-                                    <a class="green item active" style="color: white">
-                                        Jadwal Saya 
-                                    </a>
-                                </li>
-                        </div>
-                        <div class="header_space">
-                            <li class="nav-item">
-                                <a class="green item active" style="color: white">
-                                    Paket Wisata
-                                </a>
-                            </li>
-                        </div>
-                        
-                        <li class="nav-item" style="color: white">
-                            <a class="green item active">
-                            <a href="{{ url('/places')}}" style="color: white">Obyek Wisata</a>
-                            </a>
-                        </li>
-                    </ul>
-
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
                         @if (Route::has('register'))
                             <li class="nav-item">
-                                <a class="ui inverted button" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="btn btn-outline-success mx-3" href="{{ route('register') }}" style="font-size: 15px;">{{ __('Register') }}</a>
                             </li>
                         @endif
                             <li class="nav-item">
-                                <a class="ui green button" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="btn btn-success" href="{{ route('login') }}" style="font-size: 15px;">{{ __('Login') }}</a>
                             </li>
                         @else
                             <li class="nav-item dropdown">
@@ -97,19 +75,40 @@
                         @endguest
                     </ul>
                 </div>
-            </div>       
+                
         </nav>
+        <div style="background-color: #377559">
+            <div class="container" style=" height: 45px; widht: 1920px; font-size: 15px">
+                <ul class="nav nav-pills" id="navbars" style="padding: 3px;">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="satu" style="color: white">Jadwal Saya</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="" id="dua" style="color: white">Paket Wisata</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/places')}}" id="tiga" style="color: white">Obyek Wisata</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
         <main class="py-4">
             @yield('content')
         </main>
-    </div>
-
-
-    
-    
-    
+    </div> 
 </body>
 </html>
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('ul li a').click(function(){
+            $('li a').removeClass("active");
+            $(this).addClass("active");
+        });
+    });
+</script>
 
 {{-- <script>
     $(document).ready(function(){

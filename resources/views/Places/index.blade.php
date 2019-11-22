@@ -20,7 +20,7 @@
                         <div class="card" style="width: 18rem">
                             <img src="/images/{{ $place['gambar'] }}" class="card-img-top" style="width: 250px; height: 150px" alt="...">
                             <div class="card-body">
-                                <a href="/places/{{ $place->obyek_id }}" class="my-5"><h5 class="card-title">{{ $place['nama'] }}</h5></a>
+                                <a href="/places/{{ $place->id }}" class="my-5"><h5 class="card-title">{{ $place['nama'] }}</h5></a>
                                 <p class="card-text" style="height: 180px">{{ $place['deskripsi'] }}</p>
                                 <p class="card-text">{{ $place['jam_operasional'] }}</p>
                                 <p class="card-text">Rp {{ $place['harga_tiket'] }}</p>
@@ -30,11 +30,11 @@
                     </li>
                     @endforeach
                 </ul>  
-                    <table>
-                        <tbody>
+                <table>
+                    <tbody>
 
-                        </tbody>
-                    </table>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
