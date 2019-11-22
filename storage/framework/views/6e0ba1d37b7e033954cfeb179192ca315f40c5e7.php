@@ -18,7 +18,7 @@
                         <div class="card" style="width: 18rem">
                             <img src="/images/<?php echo e($place['gambar']); ?>" class="card-img-top" style="width: 250px; height: 150px" alt="...">
                             <div class="card-body">
-                                <a href="/places/<?php echo e($place->obyek_id); ?>" class="my-5"><h5 class="card-title"><?php echo e($place['nama']); ?></h5></a>
+                                <a href="/places/<?php echo e($place->id); ?>" class="my-5"><h5 class="card-title"><?php echo e($place['nama']); ?></h5></a>
                                 <p class="card-text" style="height: 180px"><?php echo e($place['deskripsi']); ?></p>
                                 <p class="card-text"><?php echo e($place['jam_operasional']); ?></p>
                                 <p class="card-text">Rp <?php echo e($place['harga_tiket']); ?></p>
@@ -28,11 +28,11 @@
                     </li>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </ul>  
-                    <table>
-                        <tbody>
+                <table>
+                    <tbody>
 
-                        </tbody>
-                    </table>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
