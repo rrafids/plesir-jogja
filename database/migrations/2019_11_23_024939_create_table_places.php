@@ -21,7 +21,7 @@ class CreateTablePlaces extends Migration
             $table->time('tutup');
             $table->string('hari', 255);
             $table->longText('deskripsi');
-            $table->integer('harga_tiket', 100);
+            $table->string('harga_tiket', 100);
             $table->string('tempat_umum', 1000);
         });
     }
@@ -33,6 +33,6 @@ class CreateTablePlaces extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_places');
+        Schema::dropIfExists('places');
     }
 }
