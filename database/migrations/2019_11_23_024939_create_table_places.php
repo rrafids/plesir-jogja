@@ -15,14 +15,14 @@ class CreateTablePlaces extends Migration
     {
         Schema::create('places', function (Blueprint $table) {
             $table->bigIncrements('id', 20);
-            $table->varchar('nama', 255);
-            $table->varchar('gambar', 255);
+            $table->string('nama', 255);
+            $table->string('gambar', 255);
             $table->time('buka');
             $table->time('tutup');
-            $table->varchar('hari', 255);
+            $table->string('hari', 255);
             $table->longText('deskripsi');
             $table->integer('harga_tiket', 100);
-            $table->varchar('tempat_umum', 1000);
+            $table->string('tempat_umum', 1000);
         });
     }
 
