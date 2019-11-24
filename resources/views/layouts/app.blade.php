@@ -18,6 +18,9 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     
+    {{-- Script API MapBox --}}
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet' />
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -78,16 +81,22 @@
                 
         </nav>
         <div style="background-color: #377559">
-            <div class="container" style=" height: 45px; widht: 1920px; font-size: 15px">
-                <ul class="nav nav-pills" id="navbars" style="padding: 3px;">
+            <div class="container" style=" height: 45px; font-size: 15px">
+                <ul class="nav nav-pills" id="navbars" style="padding-top: 3px; padding-bot: 3px;">
                     <li class="nav-item">
-                        <a class="nav-link" href="#" id="satu" style="color: white">Jadwal Saya</a>
+                        <a class="nav-link" href="#" id="satu" style="color: white">
+                            <i class="calendar alternate outline icon"></i>
+                            Jadwal Saya
+                        </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="" id="dua" style="color: white">Paket Wisata</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/places')}}" id="tiga" style="color: white">Obyek Wisata</a>
+                        <a class="nav-link" href="{{ url('/places')}}" id="tiga" style="color: white">
+                            <i class="tag icon"></i>
+                            Obyek Wisata
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -97,6 +106,7 @@
             @yield('content')
         </main>
     </div> 
+    <div id='map' style='width: 400px; height: 300px;'></div>
 </body>
 </html>
 

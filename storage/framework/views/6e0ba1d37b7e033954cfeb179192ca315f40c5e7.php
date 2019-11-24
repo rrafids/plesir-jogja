@@ -18,9 +18,14 @@
                         <div class="card" style="width: 18rem">
                             <img src="/images/<?php echo e($place['gambar']); ?>" class="card-img-top" style="width: 250px; height: 150px" alt="...">
                             <div class="card-body">
-                                <a href="/places/<?php echo e($place->id); ?>" class="my-5"><h5 class="card-title"><?php echo e($place['nama']); ?></h5></a>
+                                <a href="/places/<?php echo e($place->id); ?>"><h5 class="card-title"><?php echo e($place['nama']); ?></h5></a> <br>
                                 <p class="card-text" style="height: 180px"><?php echo e($place['deskripsi']); ?></p>
-                                <p class="card-text"><?php echo e($place['jam_operasional']); ?></p>
+                                <p class="card-text">
+                                    <a style="color: blue">Buka: </a>  <br>
+                                    <?php echo e($place->hari); ?>,
+                                    <?php echo e($place['buka']); ?> <a style="color: blue">-</a> <?php echo e($place['tutup']); ?>
+
+                                </p>
                                 <p class="card-text">Rp <?php echo e($place['harga_tiket']); ?></p>
                                 <a href="#" class="btn btn-primary">Beli Tiket</a>
                             </div>
@@ -30,7 +35,7 @@
                 </ul>  
                 <table>
                     <tbody>
-
+                        
                     </tbody>
                 </table>
             </div>
