@@ -34,7 +34,7 @@
     <div class="ui segment">
         <div class="about_title">
             PlesirJogja.com
-            <?php for($i=0; $i<27; $i++): ?> 
+            <?php for($i=0; $i<25; $i++): ?> 
                 &emsp;
             <?php endfor; ?>
             Temukan Kami di:    
@@ -44,7 +44,6 @@
         </div>
         
         <div class="ui divider"></div>
-
 
         <div class="ui three column very relaxed grid">
             <div class="column">

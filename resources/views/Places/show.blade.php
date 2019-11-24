@@ -6,10 +6,36 @@
     <h5>Candi</h5>
     <ul class="list-inline my-3">
         <li class="list-inline-item" >
-            <img src="/images/{{ $place['gambar'] }}" alt="..." style="width: 697px; height: 455px; margin-top: -407px;">
+            {{-- <img src="/images/{{ $place['gambar'] }}" alt="..." style="width: 697px; height: 455px; margin-top: -407px;"> --}}
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner" style="width: 697px; height: 455px;">
+                    <div class="carousel-item active">
+                        <img class="d-block w-100" src="/images/{{ $place['gambar'] }}" alt="First slide" style="width: 697px; height: 455px;">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="/images/{{ $place['gambar'] }}" alt="Second slide" style="width: 697px; height: 455px;">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="/images/{{ $place['gambar'] }}" alt="Third slide" style="width: 697px; height: 455px;">
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
         </li>
         <li class="list-inline-item">
-            <div id='map' style='width: 400px; height: 300px;'></div>
+            <div id='map' style='width: 400px; height: 275px; position: absolute; top: 190px;'></div>
             <script>
                 mapboxgl.accessToken = 'pk.eyJ1IjoicnJhZmlkczE3IiwiYSI6ImNrM2F4dXZrYjA3ajgzbG51M3JrMXR6bnUifQ.ja3BRkAopqWe8Mv7nsj0Ow';
                 var map = new mapboxgl.Map({
@@ -17,11 +43,10 @@
                     style: 'mapbox://styles/mapbox/streets-v11'
                 });
             </script>
-            <br>
-            <h5 style="border: solid 1px #78FFC4; margin-top: -10px; padding: 10px; padding-left: 15px">
-                Buka: {{ $place->buka }}-{{ $place->tutup }} <br>
+            <h5 style="border: solid 1px #78FFC4; margin-top: -30px; padding: 10px; padding-left: 15px; position: absolute; top: 525px;">
+                Buka: {{ $place->buka }}-{{ $place->tutup }}
                 <hr>
-                Tiket: Rp {{ $place->harga_tiket}} <br>
+                Tiket: Rp {{ $place->harga_tiket}} 
                 <hr>
                 <button class="btn btn-success" style="width: 370px">Beli Tiket</button>
             </h5>

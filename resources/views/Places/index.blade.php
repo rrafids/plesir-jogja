@@ -20,9 +20,13 @@
                         <div class="card" style="width: 18rem">
                             <img src="/images/{{ $place['gambar'] }}" class="card-img-top" style="width: 250px; height: 150px" alt="...">
                             <div class="card-body">
-                                <a href="/places/{{ $place->id }}" class="my-5"><h5 class="card-title">{{ $place['nama'] }}</h5></a>
+                                <a href="/places/{{ $place->id }}"><h5 class="card-title">{{ $place['nama'] }}</h5></a> <br>
                                 <p class="card-text" style="height: 180px">{{ $place['deskripsi'] }}</p>
-                                <p class="card-text">{{ $place['jam_operasional'] }}</p>
+                                <p class="card-text">
+                                    <a style="color: blue">Buka: </a>  <br>
+                                    {{ $place->hari }},
+                                    {{ $place['buka'] }} <a style="color: blue">-</a> {{ $place['tutup'] }}
+                                </p>
                                 <p class="card-text">Rp {{ $place['harga_tiket'] }}</p>
                                 <a href="#" class="btn btn-primary">Beli Tiket</a>
                             </div>
@@ -32,7 +36,7 @@
                 </ul>  
                 <table>
                     <tbody>
-
+                        
                     </tbody>
                 </table>
             </div>
