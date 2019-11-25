@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\Place;
 use Illuminate\Http\Request;
 
@@ -15,6 +16,7 @@ class PlacesController extends Controller
     public function index()
     {
         $places = Place::all();
+        $comments = Comment::all();
         return view('Places.index', compact('places'));
     }
 
@@ -47,7 +49,8 @@ class PlacesController extends Controller
      */
     public function show(Place $place)
     {
-        return view('Places.show', compact('place'));
+        $comments = Comment::all();
+        return view('Places.show', compact('place', 'comments'));
     }
 
     /**

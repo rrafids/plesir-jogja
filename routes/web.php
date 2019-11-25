@@ -17,6 +17,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('places', 'PlacesController'); 
-// Route::get('Places.index', 'LiveSearchController@index');
+Route::resource('places', 'PlacesController');
+Route::resource('comments', 'CommentsController');
+
+
+// Route::get('Places/show', 'CommentsController@index');
+// Route::resource('Places.show', 'CommentsController');
+// Route::get('/places/{places}', 'CommentsController@index');
 // Route::get('Places/action', 'LiveSearchController@action')->name('Places.action');

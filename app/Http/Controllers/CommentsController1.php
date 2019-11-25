@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use Illuminate\Http\Request;
 
-class TicketsController extends Controller
+class CommentsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +14,8 @@ class TicketsController extends Controller
      */
     public function index()
     {
-        $tickets = Ticket::all();
-        return view('Places.show', compact('tickets'));
+        $comments = Comment::all();
+        return view('Places.show', compact('comments'));
     }
 
     /**
