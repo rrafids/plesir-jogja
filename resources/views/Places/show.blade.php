@@ -180,3 +180,123 @@
   });
       </script>
   @endsection
+
+
+<div class="modal fade" id="BeliTiket" tabindex="-1" role="dialog" aria-labelledby="BeliTiketLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="BeliTiketLabel">Pembelian Tiket</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action ="show.blade.php" method ="POST">
+        <h5>Deskrpisi Tiket</h5>
+        Tiket ke : {{ $place->nama }} <br>
+        Harga    : Rp {{ $place->harga_tiket}} <br>
+        Booking ID :<?php echo rand() . "\n"; ?>
+        <br>
+        <br>
+        <h5> Data Diri :</h5>
+        <br>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Nama :</label>
+            <input type="text" class="form-control" name ="Nama">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Email:</label>
+            <input type="text" class="form-control"name="Email">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Nomor Telepon:</label>
+            <input type="text" class="form-control" name="NoTelp">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#KonfirmBeli" id ="Konfirm">Beli</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="KonfirmBeli" tabindex="-1" role="dialog" aria-labelledby="KonfirmBeliLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="KonfirmBeliLabel">Pembelian Tiket</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+            <script type="text/javascript">
+            
+            </script>
+        <form>
+        <h5>Deskrpisi Tiket</h5>
+        Tiket ke : {{ $place->nama }} <br>
+        Harga    : Rp {{ $place->harga_tiket}} <br>
+        Booking ID :<?php echo rand() . "\n"; ?>
+        <br>
+        <br>
+        <h5> Data Diri :</h5>
+        <br>
+          <div class="form-group">
+            <input for="message-text" class="col-form-label"value="{{$Nama}}" >
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" value="Email">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="NoTelp">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Konfirmasi</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+$(document).ready(function () {
+	
+    /* Launch modals */
+    $('#Beli').on('click', function () {
+      $('#BeliTiket').modal({
+        show: true
+      });
+    });
+    $('#Konfirm').on('click', function () {
+      $('#KonfirmBeli').modal({
+        show: true
+      });
+    });
+
+    $(document).on('show.bs.modal', '.modal', function () {
+			var zIndex = calculateZIndex();
+
+			$(this).css('z-index', zIndex);
+
+			setTimeout(function () {
+				$('.modal-backdrop').not('.modal-stack').css('z-index', zIndex - 1).addClass('modal-stack');
+			}, 0);
+		})
+		$(document).on('hidden.bs.modal', '.modal', function () {
+			$('.modal:visible').length && $(document.body).addClass('modal-open');
+		})
+		function calculateZIndex() {
+			var zIndex = Math.max.apply(null, Array.prototype.map.call(document.querySelectorAll('*'), function (el) {
+				return +el.style.zIndex;
+			})) + 10;
+
+			return zIndex;
+		}
+});
+    </script>
+@endsection
