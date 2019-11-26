@@ -39,29 +39,20 @@
             </h4>
         </li>
     </ul>
-    <form class="form-group">
-                <table class="table">
-                    <tbody>
-                        @foreach ( $komentar as $komen)
-                        <tr>
-                            <td><h4>{{ $komen-> user_id}}</h4></td>
-                        </tr>
-                        <tr>
-                            <td><h6>{{ $komen-> content}}</h6></td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+   @foreach ($place->comments as $comment)
+    <p>{{ $comment->user->name }} {{$comment->created_at}}</p>
+    <p>{{ $comment->content }}</p>
+    <hr>
+  @endforeach
 
-                <div class="form-group">
-                        <label for="komen">Komentar</label>
-                        <textarea class="form-control" id="komen" rows="3"></textarea>
-                </div>
-                      <div class="">
-                          <button class="btn btn-primary float-right my-20" type="submit">Submit</button>
-
-                      </div>
-    </form>
+                <form action="{{route('comments.store')}}" method="post">
+                        {{ csrf_field() }}
+                            <label for="komen">Komentar</label>
+                            <textarea class="form-control" name="content" id="komen" rows="3"></textarea>
+                            <button class="btn btn-primary float-right my-20" type="submit">Submit</button>
+                            <input type="hidden" name="place_id" value="{{$place->id}}">
+                            <input type="hidden" name="">
+                    </form>
 </div>
 
 
@@ -130,7 +121,7 @@
         <h5> Data Diri :</h5>
         <br>
           <div class="form-group">
-            <input for="message-text" class="col-form-label"value="{{$Nama}}" >
+            {{-- <input for="message-text" class="col-form-label"value="{{$Nama}}" > --}}
           </div>
           <div class="form-group">
             <input type="text" class="form-control" value="Email">

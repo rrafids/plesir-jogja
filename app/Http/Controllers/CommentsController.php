@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Place;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Http\Requests\CommentRequest;
 
 class CommentsController extends Controller
 {
@@ -36,7 +39,15 @@ class CommentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $place = Place::findOrFail($request->place_id);
+        Comment::create([
+            'place_id'=>$place->id,
+            'user_id'=>auth()->id(),
+            'content'=>$request->content,
+        ]);
+        // $request->content;
+        // echo $request;
+        return redirect()->back();
     }
 
     /**
