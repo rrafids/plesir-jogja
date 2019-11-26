@@ -17,7 +17,7 @@ class PlacesController extends Controller
     {
         $places = Place::all();
         $comments = Comment::all();
-        return view('Places.index', compact('places'));
+        return view('Places.index', compact('places', 'comments'));
     }
 
     /**
@@ -48,9 +48,8 @@ class PlacesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Place $place)
-    {
-        $comments = Comment::all();
-        return view('Places.show', compact('place', 'comments'));
+    {              
+        return view('Places.show', compact('place'));
     }
 
     /**
