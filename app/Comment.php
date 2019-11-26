@@ -16,6 +16,6 @@ class Comment extends Model
     }
     public function Place()
     {
-        return $this->belongsTo('App\Place', 'place_id', 'id');
+        return $this->belongsTo('App\Place');
     }
 }

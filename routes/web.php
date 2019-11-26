@@ -18,7 +18,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('places', 'PlacesController');
-Route::post('/Places/{place}/comment', 'CommentsController@store')->name('comment.store');
 Route::resource('comments', 'CommentsController');
 
 
