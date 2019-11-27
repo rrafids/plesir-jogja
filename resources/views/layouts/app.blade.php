@@ -74,7 +74,6 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
@@ -89,7 +88,7 @@
             <div class="container" style=" height: 45px; font-size: 15px">
                 <ul class="nav nav-pills" id="navbars" style="padding-top: 3px; padding-bot: 3px;">
                     <li class="nav-item">
-                        <a class="nav-link" href="#" id="satu" style="color: white">
+                        <a class="nav-link" href="{{ url('/schedules') }}" id="satu" style="color: white">
                             <i class="calendar alternate outline icon"></i>
                             Jadwal Saya
                         </a>

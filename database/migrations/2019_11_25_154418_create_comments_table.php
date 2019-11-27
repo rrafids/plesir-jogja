@@ -17,7 +17,7 @@ class CreateCommentsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('place_id')->unsigned();
-            $table->decimal('rating');
+            $table->decimal('rating')->nullable();
             $table->string('content');
             $table->timestamps();
         });

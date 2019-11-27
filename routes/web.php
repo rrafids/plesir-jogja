@@ -19,6 +19,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('places', 'PlacesController');
 Route::resource('comments', 'CommentsController');
+Route::resource('schedules', 'SchedulesController');
 
 
 // Route::get('Places/show', 'CommentsController@index');

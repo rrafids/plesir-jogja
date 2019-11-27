@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Comment;
-use App\Place;
+use App\Schedule;
 use Illuminate\Http\Request;
 
-class PlacesController extends Controller
+class SchedulesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +14,8 @@ class PlacesController extends Controller
      */
     public function index()
     {
-        $places = Place::all();
-        $comments = Comment::all();
-        return view('Places.index', compact('places'));
+        $schedules = Schedule::all();
+        return view('Schedules.index', compact('schedules'));
     }
 
     /**
@@ -38,7 +36,7 @@ class PlacesController extends Controller
      */
     public function store(Request $request)
     {
-        
+        //
     }
 
     /**
@@ -47,9 +45,9 @@ class PlacesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Place $place)
-    {              
-        return view('Places.show', compact('place'));
+    public function show($id)
+    {
+        //
     }
 
     /**

@@ -16,8 +16,15 @@ class CreateTableSchedules extends Migration
         Schema::create('schedules', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->unsigned();
-            $table->bigInteger('object_id')->unsigned();
-            $table->timestamps();
+            $table->bigInteger('place_id')->unsigned();
+            $table->date('date');
+            $table->time('time_start');
+            $table->time('time_end');
+        });
+
+        Schema::table('schedules', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('place_id')->references('id')->on('places');
         });
     }
 

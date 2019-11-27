@@ -1,16 +1,50 @@
 @extends('layouts.app')
-
 @section('content')
+
 <div class="container">
+
     <div class="headline">
+
         <b>Cari, Beli</b> dan <b>Atur</b> Wisatamu di <b>Jogja!</b> 
         <br>
-        <button class="green ui green button">
+        <button type="button" class="btn btn-primary pb-3" data-toggle="modal" data-target=".bd-example-modal-lg">
             <div class="bAturWisata">
                 <i class="calendar alternate outline icon"></i>
                 Atur Wisataku
             </div>
         </button>
+
+
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Tambahkan Jadwal Wisata</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <div class="modal-body">
+            <form action="">
+                <div class="form-group">
+                    <label for="nama">Nama Jadwal</label>
+                    <input type="text" class="form-control" name="nama">
+                </div>
+                <div class="form-group">
+                    <label for="date">Tanggal</label>
+                    <input type="date" class="form-control" name="date">
+                </div>
+            </form>
+        </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
+                <button type="button" class="btn btn-primary">Buat Jadwal</button>
+            </div>
+        </div>
+    </div>
+</div>
+
         <div class="maps">
             <img src="/images/map1.png" class="g_maps" alt="">
             <br>

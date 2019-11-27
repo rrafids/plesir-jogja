@@ -16,13 +16,13 @@ class CreateTableTickets extends Migration
         Schema::create('tickets', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->unsigned();
-            $table->bigInteger('object_id')->unsigned();
+            $table->bigInteger('place_id')->unsigned();
             $table->string('kode_pembayaran');
             $table->string('kode_tiket');
         });
         Schema::table('tickets', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('object_id')->references('id')->on('places');
+            $table->foreign('place_id')->references('id')->on('places');
         });
     }
 
