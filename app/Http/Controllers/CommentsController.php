@@ -17,8 +17,8 @@ class CommentsController extends Controller
      */
     public function index()
     {
-        $comments = Comment::all();
-        return view('Places.show', [$comments => 'comments']);
+        // $comments = Comment::all();
+        // return view('Places.show', [$comments => 'comments']);
     }
 
     /**
@@ -40,13 +40,13 @@ class CommentsController extends Controller
     public function store(Request $request)
     {
         $place = Place::findOrFail($request->place_id);
+
         Comment::create([
             'place_id'=>$place->id,
             'user_id'=>auth()->id(),
             'content'=>$request->content,
         ]);
-        // $request->content;
-        // echo $request;
+
         return redirect()->back();
     }
 

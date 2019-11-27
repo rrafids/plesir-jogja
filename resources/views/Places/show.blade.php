@@ -39,21 +39,23 @@
             </h4>
         </li>
     </ul>
-   @foreach ($place->comments as $comment)
+
+  @if (Auth::check())
+  <form action="{{route('comments.store')}}" method="post">
+  {{ csrf_field() }}
+    <label for="komen">Komentar</label>
+    <textarea class="form-control" name="content" id="komen" rows="3"></textarea>
+    <input type="hidden" name="place_id" value="{{$place->id}}"> <br>
+    <button class="btn btn-primary float-right my-20" type="submit">Submit</button>
+  </form>
+  @endif
+
+  <br> <br>
+  @foreach ($place->comments as $comment)
     <p>{{ $comment->user->name }} {{$comment->created_at}}</p>
     <p>{{ $comment->content }}</p>
     <hr>
   @endforeach
-
-                <form action="{{route('comments.store')}}" method="post">
-                        {{ csrf_field() }}
-                            <label for="komen">Komentar</label>
-                            <textarea class="form-control" name="content" id="komen" rows="3"></textarea>
-                            <button class="btn btn-primary float-right my-20" type="submit">Submit</button>
-                            <input type="hidden" name="place_id" value="{{$place->id}}">
-                            <input type="hidden" name="">
-                    </form>
-</div>
 
 
 
