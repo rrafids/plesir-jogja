@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Middleware;
-
+use App\Http\Middleware\Auth;
 use Closure;
 
 class isAdmin
@@ -14,8 +14,8 @@ class isAdmin
      * @return mixed
      */
     public function handle($request, Closure $next)
-    {
-        if(auth()->user()->isAdmin == 1){
+    {   
+        if(Auth()->check() && auth()->user()->isAdmin == 1){
             return $next($request);
         }
         

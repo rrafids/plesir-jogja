@@ -1,11 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-@if(auth()->user()->isAdmin == 1)
-<a href="{{url('admin/routes')}}">Admin</a>
-@else
-<div class=”panel-heading”>Normal User</div>
-@endif
 
 <div class="container">
     <div class="headline">

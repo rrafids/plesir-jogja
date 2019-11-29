@@ -35,7 +35,6 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #245B43">
-            
                 <a class="navbar-brand" href="{{ url('/') }}" style="color: white; font-size: 20px;">
                     <i class="location arrow icon"></i>
                     <b> {{ config('apps.name', 'PlesirJogja.com') }} </b>

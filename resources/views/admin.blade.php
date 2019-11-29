@@ -9,10 +9,11 @@
                 <div class="card-header">Dashboard</div>
 
                 <div class="card-body">
+                    {{"selamat datang admin"}}
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
+                                {{"selamat datang admin"}}
+                            </div>
                     @endif
 
                     You are logged in!

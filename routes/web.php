@@ -12,14 +12,13 @@
 */
 Route::get('/', function () {
     if(Auth::check() && auth::user()->isAdmin == 1){
-        return view('admin');
+        return redirect('admin');
 
     }elseif((Auth::check() && auth::user()->isAdmin != 1)){
         return redirect('/home');
     }else {
-        return view('auth.login');
+        return view('/home');
     }
-    
 });
 
 Auth::routes();
@@ -28,8 +27,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('places', 'PlacesController');
 Route::resource('comments', 'CommentsController');
 Route::resource('schedules', 'SchedulesController');
-
-Route::get('admin/routes', 'HomeController@admin')->middleware('admin');
+Route::resource('admin', 'AdminController');
 
 // Route::get('Places/show', 'CommentsController@index');
 // Route::resource('Places.show', 'CommentsController');
