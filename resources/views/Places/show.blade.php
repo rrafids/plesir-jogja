@@ -37,7 +37,7 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 {{ $place->deskripsi }}
             </h4>
-        </li>
+          </li>
     </ul>
 
 <div class="container" style="background-color: #E8FAF2">

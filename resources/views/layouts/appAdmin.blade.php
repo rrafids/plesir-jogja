@@ -37,6 +37,7 @@
         .checked {
           color: orange;
         }
+    </style>
 </head>
 <body>
     <div id="app">
