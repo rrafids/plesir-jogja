@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.appAdmin')
 
 @section('content')
     <div class="container">
    <!-- Remove This Before You Start -->
-   <h1>Tambah Destinasi Wisata</h1>
+   <h1>Ubah Destinasi Wisata</h1>
    <hr>
    @if (count($errors) > 0)
    <div class="alert alert-danger">

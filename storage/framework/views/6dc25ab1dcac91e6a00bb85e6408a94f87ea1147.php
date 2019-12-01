@@ -17,7 +17,7 @@
     
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-    
+
     
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet' />
@@ -28,14 +28,19 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?php echo e(url('/css/beranda.css')); ?>" />
     <link rel="stylesheet" type="text/css" href="<?php echo e(url('/css/jadwal.css')); ?>" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Styles -->
     <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
+    <style>
+        .checked {
+            color: orange;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #245B43">
-            
                 <a class="navbar-brand" href="<?php echo e(url('/')); ?>" style="color: white; font-size: 20px;">
                     <i class="location arrow icon"></i>
                     <b> <?php echo e(config('apps.name', 'PlesirJogja.com')); ?> </b>
@@ -52,7 +57,7 @@
                         <!-- Authentication Links -->
                         <li class="nav-item">
                             <a href="" style="color: white">
-                                <i class="shopping cart icon"></i>
+                                <i class="shopping cart icon mx-3" style="font-size: 20px"></i>
                             </a>
                         </li>
                         <?php if(auth()->guard()->guest()): ?>
@@ -116,14 +121,7 @@
 </html>
 
 
-<script type="text/javascript">
-    $(document).ready(function(){
-        $('ul li a').click(function(){
-            $('li a').removeClass("active");
-            $(this).addClass("active");
-        });
-    });
-</script>
+
 
 
     <?php /**PATH /opt/lampp/htdocs/PlesirJogja/resources/views/layouts/app.blade.php ENDPATH**/ ?>

@@ -8,14 +8,14 @@
             <img src="/images/<?php echo e($place['gambar']); ?>" alt="..." style="width: 697px; height: 455px; margin-top: -407px;">
         </li>
         <li class="list-inline-item">
-            <div id='map' style='width: 400px; height: 300px;'></div>
-            <script>
-                mapboxgl.accessToken = 'pk.eyJ1IjoicnJhZmlkczE3IiwiYSI6ImNrM2F4dXZrYjA3ajgzbG51M3JrMXR6bnUifQ.ja3BRkAopqWe8Mv7nsj0Ow';
-                var map = new mapboxgl.Map({
-                    container: 'map',
-                    style: 'mapbox://styles/mapbox/streets-v11'
-                });
-            </script>
+          <div id='map' style='width: 400px; height: 300px;'></div>
+          <script>
+            mapboxgl.accessToken = 'pk.eyJ1IjoicnJhZmlkczE3IiwiYSI6ImNrM2F4dXZrYjA3ajgzbG51M3JrMXR6bnUifQ.ja3BRkAopqWe8Mv7nsj0Ow&libraries=places';
+            var map = new mapboxgl.Map({
+              container: 'map',
+              style: 'mapbox://styles/mapbox/streets-v11'
+            });
+          </script>
             <br>
             <h5 style="border: solid 1px #78FFC4; margin-top: -10px; padding: 10px; padding-left: 15px">
                 Buka: <?php echo e($place->buka); ?>-<?php echo e($place->tutup); ?> <br>
@@ -40,24 +40,48 @@
         </li>
     </ul>
 
+<div class="container" style="background-color: #E8FAF2">
+  <div style="font-size: 20px; padding-top:  15px; padding-bot: -15px;">
+    <b>Ulasan</b>  
+  </div>
+    <?php if(Auth::check()): ?>
+    <form action="<?php echo e(route('comments.store')); ?>" method="post">
+    <?php echo e(csrf_field()); ?>
 
-  <form action="<?php echo e(route('comments.store')); ?>" method="post">
-  <?php echo e(csrf_field()); ?>
-
-    <label for="komen">Komentar</label>
-    <textarea class="form-control" name="content" id="komen" rows="3"></textarea>
-    <input type="hidden" name="place_id" value="<?php echo e($place->id); ?>"> <br>
-    <button class="btn btn-primary float-right my-20" type="submit">Submit</button>
-  </form>
-
-  <br> <br>
-  <?php $__currentLoopData = $place->comments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $comment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-    <p><?php echo e($comment->user->name); ?> <?php echo e($comment->created_at); ?></p>
-    <p><?php echo e($comment->content); ?></p>
-    <hr>
-  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
-
+    <br>
+      <hr>
+      <label for="komen" style="font-size: 15px">
+          <b>Tulis Komentar</b>
+      </label>
+      <br>
+      <label style="font-size: 15px">
+        <b style="font-size: 15px">Beri Bintang: </b>
+      </label>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      <br>
+      <textarea class="form-control" name="content" id="komen" rows="3"></textarea>
+      <input type="hidden" name="place_id" value="<?php echo e($place->id); ?>"> <br>
+      <button class="btn btn-primary float-right my-20" type="submit">Submit</button>
+    </form>
+    <?php endif; ?>
+  
+    <br><br>
+    
+    <?php $__currentLoopData = $place->comments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $comment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+      <div class="card">
+        <h5 class="card-header"><?php echo e($comment->user->name); ?></h5>
+        <div class="card-body">
+          <h5 class="card-title"><?php echo e($comment->content); ?></h5>
+          
+        </div>
+      </div>
+      <hr>
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+</div>
 
 <div class="modal fade" id="BeliTiket" tabindex="-1" role="dialog" aria-labelledby="BeliTiketLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl" role="document">
@@ -142,7 +166,6 @@
 </div>
 <script>
 $(document).ready(function () {
-	
     /* Launch modals */
     $('#Beli').on('click', function () {
       $('#BeliTiket').modal({

@@ -1,28 +1,34 @@
-@extends('layouts.app')
+@extends('layouts.appAdmin')
 
 @section('content')
-<div class="container">
-            <div class="card mt-5">
+<div class="container mt-4">
+            <div class="card mt-2">
                 <div class="card-header text-center">
-                    Data Destinasi Wisata
+                    <h2><strong>Data Obyek Wisata</strong></h2>
                 </div>
                 <div class="card-body">
-                    <a href="{{route('admin.create')}}" class="btn btn-primary">Input Pegawai Baru</a>
-                    <br/>
-                    <br/>
-                    <table class="table table-bordered table-hover table-striped">
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <input class="form-control" type="search" placeholder="Search" aria-label="Search" style="width: 350px">
+                        </li>
+                        <li class="list-inline-item" style="margin-left: 540px">
+                            <a href="{{route('admin.create')}}" class="btn btn-primary">
+                                <i class="plus icon"></i>
+                                Tambah Obyek Wisata
+                            </a>
+                        </li>
+                    </ul>
+                    <table class="table table-bordered table-hover table-striped" style="font-size: 15px; text-align: center" align="center">
                         <thead>
                             <tr>
-                                <th scope="col">No.</th>
-                                <th scope="col">Destinasi Wisata</th>
-                                <th scope="col">Hari Buka</th>
-                                <th scope="col">Jam Buka</th>
-                                <th scope="col">Jam Tutup</th>
-                                <th scope="col">Harga Tiket</th>
-                                <th scope="col">Tempat Umum</th>
-                                <th scope="col">Deskripsi</th>
-                                <th scope="col">Gambar</th>
-                                <th scope="col">Action</th>
+                                <th scope="col" style="font-size: 17px;">ID</th>
+                                <th scope="col" style="font-size: 17px;">Nama</th>
+                                <th scope="col" style="font-size: 17px;">Operasional</th>
+                                <th scope="col" style="font-size: 17px;">Buka</th>
+                                <th scope="col" style="font-size: 17px;">Tutup</th>
+                                <th scope="col" style="font-size: 17px;">Tiket</th>
+                                <th scope="col" style="font-size: 17px;">Gambar</th>
+                                <th scope="col" style="font-size: 17px; width: 150px">Aksi</th>
                             </tr>
                         </thead>
                         @php
@@ -30,26 +36,23 @@
                         @endphp
                         <tbody>
                             @foreach($place as $p)
-                            <tr>
-                                <td>{{$no++}}</td>
+                            <tr style="position: center center">
+                                <td style="text-align: center center">{{$no++}}</td>
                                 <td>{{ $p->nama }}</td>
                                 <td>{{ $p->hari }}</td>
                                 <td>{{ $p->buka}}</td>
                                 <td>{{ $p->tutup }}</td>
-                                <td>{{ $p->harga_tiket}}</td>
-                                <td>{{ $p->tempat_umum }}</td>
-                                <td>{{ $p->deskripsi}}</td>
-                                <td><img width="150px" src="{{ url('/images/'.$p->gambar) }}"></td>
+                                <td>Rp {{ $p->harga_tiket}}</td>
+                                <td><img width="150px" height="90px" src="{{ url('/images/'.$p->gambar) }}"></td>
 
-                                <td>
-                                <a href="{{ route('admin.edit', $p->id) }}" class="btn btn-warning" >Edit</a>
-                                <form action="{{ route('admin.destroy', $p->id)}}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-danger" type="submit">Hapus</button>
-                                  </form>   
-                            
-                            </td>
+                                <td style="font-size: 20px">
+                                    <a href="{{ route('admin.edit', $p->id) }}"><i class="blue edit icon"></i></a> |
+                                    <form action="{{ route('admin.destroy', $p->id)}}" method="post" class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" style="background-color: transparent; border: 0;" onclick="return confirm('Yakin hapus');"><i class="red trash alternate icon"></i></button>
+                                    </form>   
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
