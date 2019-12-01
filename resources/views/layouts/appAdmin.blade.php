@@ -30,13 +30,13 @@
     <link rel="stylesheet" type="text/css" href="{{ url('/css/jadwal.css') }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style>
         .checked {
-            color: orange;
+          color: orange;
         }
-    </style>
 </head>
 <body>
     <div id="app">
@@ -51,7 +51,6 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
@@ -74,7 +73,6 @@
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" style="color: white" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
-
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
@@ -87,35 +85,37 @@
                         @endguest
                     </ul>
                 </div>
-                
         </nav>
         <div style="background-color: #377559">
             <div class="container" style=" height: 45px; font-size: 15px">
                 <ul class="nav nav-pills" id="navbars" style="padding-top: 3px; padding-bot: 3px;">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/schedules') }}" id="satu" style="color: white">
+                        <a class="nav-link" href="{{ url('admin') }}" id="tiga" style="color: white">
+                            <i class="tag icon"></i>
+                            Obyek Wisata
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: white">
                             <i class="calendar alternate outline icon"></i>
-                            Jadwal Saya
+                            Sejarah Pembelian
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="" id="dua" style="color: white">Paket Wisata</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/places')}}" id="tiga" style="color: white">
-                            <i class="tag icon"></i>
-                            Obyek Wisata
-                        </a>
-                    </li>
                 </ul>
             </div>
         </div>
         
-        <main class="py-4">
+        <main class="py-4" style="background-color: #EDFEF7">
+            <div class="container">
+                <h4 style="color:#245B43">Welcome, <strong>Admin</strong>  </h4>
+            </div>
+            <br>
             @yield('content')
         </main>
     </div> 
-    <div id='map' style='width: 400px; height: 300px;'></div>
 </body>
 </html>
 
