@@ -11,7 +11,6 @@ use Illuminate\Http\File;
 use Illuminate\Http\UploadedFile;
 use App\Traits\UploadTrait;
 
-
 class AdminController extends Controller
 {
     function __construct()
@@ -26,7 +25,7 @@ class AdminController extends Controller
     public function index()
     {
         $place = Place::all();
-    	return view('admin/index', ['place' => $place]);
+        return view('admin.index', compact('place'));
     }
 
     /**
@@ -36,7 +35,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-    	return view('admin/addPlace');
+        return view('admin/addPlace');
     }
 
     /**
@@ -73,14 +72,14 @@ class AdminController extends Controller
             'price' => 'required|numeric',
             'facl' => 'required',
             'desc' => 'required',                        
-               
+
         ], $messages, $attributes);
 
 		// menyimpan data file yang diupload ke variabel $file
 		// $file = $request->file('gambar');
- 
+
 		// $nama_file = time()."_".$file->getClientOriginalExtension();
- 
+
       	//         // isi dengan nama folder tempat kemana file diupload
 		// $tujuan_upload = '/images';
         // $file->move($tujuan_upload,$nama_file);
@@ -101,7 +100,7 @@ class AdminController extends Controller
 
 
         // $fileName = time().'.'.$request->gambar->extension();  
-   
+
         // $request->file->move(public_path('images'), $fileName);
 
     	Place::create([
