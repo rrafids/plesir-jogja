@@ -11,7 +11,7 @@ use Illuminate\Http\File;
 use Illuminate\Http\UploadedFile;
 use App\Traits\UploadTrait;
 
-class AdminController extends Controller
+class AdminPlaceController extends Controller
 {
     function __construct()
     {
@@ -25,7 +25,7 @@ class AdminController extends Controller
     public function index()
     {
         $place = Place::all();
-        return view('admin.index', compact('place'));
+        return view('admin/places/index', compact('place'));
     }
 
     /**
@@ -35,7 +35,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('admin/addPlace');
+        return view('admin/places/addPlace');
     }
 
     /**
@@ -60,18 +60,19 @@ class AdminController extends Controller
             'price' => 'Harga Tiket',
             'facl' => 'Fasilitas',
             'desc' => 'Deskripsi' ,
-            'file' => 'File Gambar'                        
+            'gambar' => 'File Gambar'                        
 
         ];
 
     	$this->validate($request,[
             'name' => 'required',
-            'day' => 'required|alpha',
+            'day' => 'required',
             'open' => 'required',
             'close' => 'required',
             'price' => 'required|numeric',
             'facl' => 'required',
-            'desc' => 'required',                        
+            'desc' => 'required', 
+            'gambar' =>'required'
 
         ], $messages, $attributes);
 
@@ -114,7 +115,7 @@ class AdminController extends Controller
             'gambar'    => $p
         ]);
 
-        return redirect('/admin');
+        return redirect()->route('adminPlaces.index');
 
     }
 
@@ -138,7 +139,7 @@ class AdminController extends Controller
     public function edit($id)
     {
         $place = Place::find($id);
-        return view('admin/editPlace', ['place' => $place]);    
+        return view('admin/places/editPlace', ['place' => $place]);    
     }
 
     /**
@@ -170,7 +171,7 @@ class AdminController extends Controller
 
     	$this->validate($request,[
             'name' => 'required',
-            'day' => 'required|alpha',
+            'day' => 'required',
             'open' => 'required',
             'close' => 'required',
             'price' => 'required|numeric',
@@ -179,21 +180,33 @@ class AdminController extends Controller
                
         ], $messages, $attributes);
 
-        $c = $request->file('gambar')->store('/images');
-        $p = str_replace('images/', '', $c);
+        if ($request->file('gambar')){
+            $c = $request->file('gambar')->store('/images');
+            $p = str_replace('images/', '', $c); 
+            $place = Place::find($id);
+            $place->nama  = $request->name;
+            $place->hari  = $request->day;
+            $place->buka  = $request->open;
+            $place->tutup = $request->close;
+            $place->harga_tiket = $request->price;
+            $place->deskripsi   = $request->desc;
+            $place->tempat_umum = $request->facl;
+            $place->gambar      = $p;
+        }else{
+            $place = Place::find($id);
+            $place->nama  = $request->name;
+            $place->hari  = $request->day;
+            $place->buka  = $request->open;
+            $place->tutup = $request->close;
+            $place->harga_tiket = $request->price;
+            $place->deskripsi   = $request->desc;
+            $place->tempat_umum = $request->facl;
+        };
 
-        $place = Place::find($id);
-        $place->nama  = $request->name;
-        $place->hari  = $request->day;
-        $place->buka  = $request->open;
-        $place->tutup = $request->close;
-        $place->harga_tiket = $request->price;
-        $place->deskripsi   = $request->desc;
-        $place->tempat_umum = $request->facl;
-	    $place->gambar      = $p;
+
 
         $place->save();
-        return redirect()->route('admin.index'); 
+        return redirect()->route('adminPlaces.index'); 
         
     }
 
@@ -208,6 +221,6 @@ class AdminController extends Controller
         $place = Place::find($id);
         $place->delete();
 
-        return redirect()->route('admin.index');
+        return redirect()->route('adminPlaces.index');
     }
 }
