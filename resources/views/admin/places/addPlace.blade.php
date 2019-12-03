@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
    <!-- Remove This Before You Start -->
-   <h1>Ubah Destinasi Wisata</h1>
+   <h1>Tambah Destinasi Wisata</h1>
    <hr>
    @if (count($errors) > 0)
    <div class="alert alert-danger">
@@ -14,37 +14,35 @@
        </ul>
    </div>
    @endif
-   <form action="{{ route('admin.update', $place->id) }}" method="post" enctype="multipart/form-data">
+   <form action="{{ route('adminPlaces.store') }}" method="post" enctype="multipart/form-data">
        {{ csrf_field() }}
-       @method('PUT')
-
        <div class="form-group">
            <label for="name">Nama Destinasi:</label>
-           <input type="text" class="form-control" id="" name="name" value="{{$place->nama}}">
+           <input type="text" class="form-control" id="" name="name">
        </div>
-       <div class="form-group ">
+       <div class="form-group">
             <label for="day">Hari Buka: </label>
-            <input type="text" class="form-control" id="" name="day" placeholder="contoh : senin-rabu & jumat-minggu" value="{{$place->hari}}">
+            <input type="text" class="form-control" id="" name="day" placeholder="contoh : senin-rabu & jumat-minggu">
         </div>
        <div class="form-group">
            <label for="open">Jam Buka: </label>
-           <input type="time" class="form-control" id="" name="open" value="{{$place->buka}}">
+           <input type="time" class="form-control" id="" name="open">
        </div>
        <div class="form-group">
            <label for="close">Jam Tutup: </label>
-           <input type="time" class="form-control" id="" name="close" value="{{$place->tutup}}">
+           <input type="time" class="form-control" id="" name="close">
        </div>
        <div class="form-group">
            <label for="price">Harga Tiket:</label>
-           <input type="text" class="form-control" id="" name="price" value="{{$place->harga_tiket}}">
+           <input type="text" class="form-control" id="" name="price">
        </div>
        <div class="form-group">
             <label for="facl">Fasilitas:</label>
-            <input type="text" class="form-control" id="" name="facl" value="{{$place->tempat_umum}}">
+            <input type="text" class="form-control" id="" name="facl">
         </div>
        <div class="form-group">
             <label for="desc">Deskripsi:</label>
-            <textarea class="form-control" id="alamat" name="desc">{{$place->deskripsi}}</textarea>
+            <textarea class="form-control" id="alamat" name="desc"></textarea>
         </div>
         <div class="form-group">
             <label for="gambar">Masukkan File Gambar</label>

@@ -105,15 +105,14 @@
                     <li class="nav-item">
                         <a class="nav-link" href="" id="dua" style="color: white">Paket Wisata</a>
                     </li>
+                    <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/') }}" id="dua" style="color: white">Dashboard</a>
+                        </li>
                 </ul>
             </div>
         </div>
         
         <main class="py-4" style="background-color: #EDFEF7">
-            <div class="container">
-                <h4 style="color:#245B43">Welcome, <strong>Admin</strong>  </h4>
-            </div>
-            <br>
             @yield('content')
         </main>
     </div> 
