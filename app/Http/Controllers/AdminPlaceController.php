@@ -24,7 +24,7 @@ class AdminPlaceController extends Controller
      */
     public function index()
     {
-        $place = Place::all();
+        $place = Place::paginate(4);
         return view('admin/places/index', compact('place'));
     }
 

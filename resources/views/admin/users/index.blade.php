@@ -8,17 +8,17 @@
                 <div class="card-body">
                     <ul class="list-inline">
                         <li class="list-inline-item">
-                            <input class="form-control" type="search" placeholder="Search" aria-label="Search" style="width: 350px">
+                            <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search" style="width: 350px">
                         </li>
                     </ul>
-                    <table class="table table-bordered table-hover table-striped" style="font-size: 15px; text-align: center" align="center">
+                    <table id="tabel" class="table table-bordered table-hover table-striped" style="font-size: 15px; text-align: center" align="center">
                         <thead>
                             <tr>
                                 <th scope="col" style="font-size: 17px;">ID</th>
                                 <th scope="col" style="font-size: 17px;">Nama</th>
                                 <th scope="col" style="font-size: 17px;">Email</th>
                                 <th scope="col" style="font-size: 17px;">Kedudukan</th>
-                                <th scope="col" style="font-size: 17px;">Created At</th>
+                                <th scope="col" style="font-size: 17px;">Terdaftar Sejak</th>
                                 <th colspan="2" scope="col" style="font-size: 17px; width: 150px">Aksi</th>
                             </tr>
                         </thead>
@@ -49,10 +49,10 @@
                                         <a href="{{ route('adminUsers.edit', $p->id) }}"><i class="btn btn-secondary">Jadikan Admin</i></a>
                                     @endif
                                     <form action="{{ route('adminUsers.destroy', $p->id)}}" method="post" class="d-inline">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" style="background-color: transparent; border: 0;" onclick="return confirm('Yakin hapus');"><i class="red trash alternate icon"></i></button>
-                                        </form>   
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" style="background-color: transparent; border: 0;" onclick="return confirm('Yakin hapus');"><i class="red trash alternate icon"></i></button>
+                                    </form>   
 
                                 </td>
                             </tr>

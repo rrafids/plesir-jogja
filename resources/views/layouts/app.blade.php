@@ -115,7 +115,20 @@
             @yield('content')
         </main>
     </div> 
-    <div id='map' style='width: 400px; height: 300px;'></div>
+
+
+    <script>
+    $(document).ready(function() {
+        $("#search").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $('#tabel li').filter(function() {
+                $(this).toggle($(this).find('a').text().toLowerCase().indexOf(value) > -1)
+            });
+            console.log("ok");
+        });
+    });
+    </script>
+
 </body>
 </html>
 
