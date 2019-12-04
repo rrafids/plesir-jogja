@@ -11,7 +11,7 @@
                             <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search" style="width: 350px">
                         </li>
                     </ul>
-                    <table id="tabel" class="table table-bordered table-hover table-striped" style="font-size: 15px; text-align: center" align="center">
+                    <table class="table table-bordered table-hover table-striped" style="font-size: 15px; text-align: center" align="center">
                         <thead>
                             <tr>
                                 <th scope="col" style="font-size: 17px;">ID</th>
@@ -25,7 +25,7 @@
                         @php
                             $no=1;
                         @endphp
-                        <tbody>
+                        <tbody id="tabel">
                             @foreach($user as $p)
                             <tr style="position: center center">
                                 <td style="text-align: center center">{{$no++}}</td>
