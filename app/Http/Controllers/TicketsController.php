@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Ticket;
 use Illuminate\Http\Request;
 
 class TicketsController extends Controller
@@ -24,7 +25,8 @@ class TicketsController extends Controller
      */
     public function create()
     {
-        //
+        
+        return redirect()->route('adminPlaces.index');
     }
 
     /**

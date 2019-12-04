@@ -8,14 +8,33 @@
             <img src="/images/<?php echo e($place['gambar']); ?>" alt="..." style="width: 697px; height: 455px; margin-top: -407px;">
         </li>
         <li class="list-inline-item">
-          <div id='map' style='width: 400px; height: 220px;'></div>
+          <div id='map' style="width: 400px; height: 225px; z-index: 0"></div>
+          <script src='https://unpkg.com/es6-promise@4.2.4/dist/es6-promise.auto.min.js'></script>
+          <script src="https://unpkg.com/@mapbox/mapbox-sdk/umd/mapbox-sdk.min.js"></script>
           <script>
-            mapboxgl.accessToken = 'pk.eyJ1IjoicnJhZmlkczE3IiwiYSI6ImNrM2F4dXZrYjA3ajgzbG51M3JrMXR6bnUifQ.ja3BRkAopqWe8Mv7nsj0Ow&libraries=places';
-            var map = new mapboxgl.Map({
-              container: 'map',
-              style: 'mapbox://styles/mapbox/streets-v11'
-            });
-          </script>
+            mapboxgl.accessToken = 'pk.eyJ1IjoicnJhZmlkczE3IiwiYSI6ImNrM2F4dXZrYjA3ajgzbG51M3JrMXR6bnUifQ.ja3BRkAopqWe8Mv7nsj0Ow';
+            var mapboxClient = mapboxSdk({ accessToken: mapboxgl.accessToken });
+            mapboxClient.geocoding.forwardGeocode({
+              query: '<?php echo e($place->map); ?>, Yogyakarta, Indonesia',
+              autocomplete: false,
+              limit: 1
+            })
+              .send()
+              .then(function (response) {
+                if (response && response.body && response.body.features && response.body.features.length) {
+                  var feature = response.body.features[0];    
+                  var map = new mapboxgl.Map({
+                    container: 'map',
+                    style: 'mapbox://styles/mapbox/streets-v11',
+                    center: feature.center,
+                    zoom: 10
+                  });
+                  new mapboxgl.Marker()
+                  .setLngLat(feature.center)
+                  .addTo(map);
+                }
+              }); 
+            </script>
             <br>
             <h5 style="border: solid 1px #78FFC4; margin-top: -10px; padding: 10px; padding-left: 15px">
                 <b><i class="clock icon"></i> Jam Operasional</b> <br>  <br>
@@ -45,7 +64,8 @@
 
 <div class="container" style="background-color: #EFFBFB"> <br>
   <div style="font-size: 23px; padding-top:  15px; padding-bot: -15px;">
-    <i class="comment outline icon"></i>
+    &nbsp;
+    <i class="envelope open outline icon"></i>
     <b>Ulasan</b>  
   </div>
     <?php if(Auth::check()): ?>
@@ -84,87 +104,34 @@
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 </div>
 
-<div class="modal fade" id="BeliTiket" tabindex="-1" role="dialog" aria-labelledby="BeliTiketLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl" role="document">
+<div class="modal fade center" id="BeliTiket" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="BeliTiketLabel">Pembelian Tiket</h5>
+        <h3 class="modal-title" id="BeliTiketLabel"><b><i class="green ticket alternate icon"></i> Pembelian Tiket </b></h3>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form action ="show.blade.php" method ="POST">
-        <h5>Deskrpisi Tiket</h5>
-        Tiket ke : <?php echo e($place->nama); ?> <br>
-        Harga    : Rp <?php echo e($place->harga_tiket); ?> <br>
-        Booking ID :<?php echo rand() . "\n"; ?>
-        <br>
-        <br>
-        <h5> Data Diri :</h5>
-        <br>
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Nama :</label>
-            <input type="text" class="form-control" name ="Nama">
-          </div>
-          <div class="form-group">
-            <label for="message-text" class="col-form-label">Email:</label>
-            <input type="text" class="form-control"name="Email">
-          </div>
-          <div class="form-group">
-            <label for="message-text" class="col-form-label">Nomor Telepon:</label>
-            <input type="text" class="form-control" name="NoTelp">
-          </div>
+        <form action ="show.blade.php" method ="POST" style="font-size: 15px">
+          <b>Obyek Wisata :</b> <?php echo e($place->nama); ?> <br>
+          <b>Harga    :</b> Rp <?php echo e($place->harga_tiket); ?> <br>
+          <b>ID Pemesanan :</b> <?php echo e(rand()); ?>
+
+          <br>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#KonfirmBeli" id ="Konfirm">Beli</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+        <form action="" method="post" enctype="multipart/form-data">
+            <button type="button" class="btn btn-primary"  data-toggle="modal" id ="Konfirm">Beli</button>
+        </form>
       </div>
     </div>
   </div>
 </div>
 
-<div class="modal fade" id="KonfirmBeli" tabindex="-1" role="dialog" aria-labelledby="KonfirmBeliLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="KonfirmBeliLabel">Pembelian Tiket</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-            <script type="text/javascript">
-            
-            </script>
-        <form>
-        <h5>Deskrpisi Tiket</h5>
-        Tiket ke : <?php echo e($place->nama); ?> <br>
-        Harga    : Rp <?php echo e($place->harga_tiket); ?> <br>
-        Booking ID :<?php echo rand() . "\n"; ?>
-        <br>
-        <br>
-        <h5> Data Diri :</h5>
-        <br>
-          <div class="form-group">
-            
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" value="Email">
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" name="NoTelp">
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Konfirmasi</button>
-      </div>
-    </div>
-  </div>
-</div>
 <script>
 $(document).ready(function () {
     /* Launch modals */
@@ -173,6 +140,7 @@ $(document).ready(function () {
         show: true
       });
     });
+
     $('#Konfirm').on('click', function () {
       $('#KonfirmBeli').modal({
         show: true
