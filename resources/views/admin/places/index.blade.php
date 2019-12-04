@@ -8,7 +8,7 @@
                 <div class="card-body">
                     <ul class="list-inline">
                         <li class="list-inline-item">
-                            <input class="form-control" type="search" placeholder="Search" aria-label="Search" style="width: 350px">
+                            <input class="form-control" type="search" id="search" placeholder="Search" aria-label="Search" style="width: 350px">
                         </li>
                         <li class="list-inline-item" style="margin-left: 540px">
                             <a href="{{route('adminPlaces.create')}}" class="btn btn-primary">
@@ -17,7 +17,7 @@
                             </a>
                         </li>
                     </ul>
-                    <table class="table table-bordered table-hover table-striped" style="font-size: 15px; text-align: center" align="center">
+                    <table id="tabel" class="table table-bordered table-hover table-striped" style="font-size: 15px; text-align: center" align="center">
                         <thead>
                             <tr>
                                 <th scope="col" style="font-size: 17px;">ID</th>
@@ -55,7 +55,9 @@
                             </tr>
                             @endforeach
                         </tbody>
+                        
                     </table>
+                    {{ $place->links() }}
                 </div>
             </div>
         </div>

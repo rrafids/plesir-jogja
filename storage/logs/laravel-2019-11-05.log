@@ -1,4 +1,0 @@
-[2019-11-05 02:13:41] local.ERROR: Cannot redeclare App\Http\Controllers\ObyekController::create() {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 64): Cannot redeclare App\\Http\\Controllers\\ObyekController::create() at /opt/lampp/htdocs/PlesirJogja/app/Http/Controllers/ObyekController.php:29)
-[stacktrace]
-#0 {main}
-"} 

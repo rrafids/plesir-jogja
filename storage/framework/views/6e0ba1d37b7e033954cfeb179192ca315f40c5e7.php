@@ -12,25 +12,25 @@
                         <span class="input-group-text" id="basic-addon2">Search</span>
                     </div>
                 </div>
-                <ul class="list-inline">
+                <ul class="list-inline" id="tabel">
                     <?php $__currentLoopData = $places; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $place): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <li class="list-inline-item my-3 mx-3">
-                        <div class="card" style="width: 18rem">
-                            <img src="/images/<?php echo e($place['gambar']); ?>" class="card-img-top" style="width: 250px; height: 150px" alt="...">
-                            <div class="card-body">
-                                <a href="/places/<?php echo e($place->id); ?>"><h5 class="card-title"><?php echo e($place['nama']); ?></h5></a> <br>
-                                <p class="card-text" style="height: 180px"><?php echo e($place['deskripsi']); ?></p>
-                                <p class="card-text">
-                                    <a style="color: blue">Buka: </a>  <br>
-                                    <?php echo e($place->hari); ?>,
-                                    <?php echo e($place['buka']); ?> <a style="color: blue">-</a> <?php echo e($place['tutup']); ?>
+                            <li class="list-inline-item my-3 mx-3">
+                                    <div class="card" style="width: 18rem">
+                                        <img src="/images/<?php echo e($place['gambar']); ?>" class="card-img-top" style="width: 250px; height: 150px" alt="...">
+                                        <div class="card-body">
+                                            <a href="/places/<?php echo e($place->id); ?>"><h5 class="card-title"><?php echo e($place['nama']); ?></h5></a> <br>
+                                            <p class="card-text" style="height: 180px"><?php echo e($place['deskripsi']); ?></p>
+                                            <p class="card-text">
+                                                <a style="color: blue">Buka: </a>  <br>
+                                                <?php echo e($place->hari); ?>,
+                                                <?php echo e($place->buka); ?> <a style="color: blue">-</a> <?php echo e($place['tutup']); ?>
 
-                                </p>
-                                <p class="card-text">Rp <?php echo e($place['harga_tiket']); ?></p>
-                                <a href="#" class="btn btn-primary">Beli Tiket</a>
-                            </div>
-                        </div>
-                    </li>
+                                            </p>
+                                            <p class="card-text">Rp <?php echo e($place['harga_tiket']); ?></p>
+                                            <a href="#" class="btn btn-primary">Beli Tiket</a>
+                                        </div>
+                                    </div>
+                                </li>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </ul>  
                 <table>

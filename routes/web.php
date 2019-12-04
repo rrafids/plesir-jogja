@@ -10,13 +10,17 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-    if(Auth::check() && auth::user()->isAdmin == 1){
+Route::get('/', function () 
+{
+    if(Auth::check() && auth::user()->isAdmin == 1)
+    {
         return view('admin/index');
 
-    }else if((Auth::check() && auth::user()->isAdmin != 1)){
+    }else if((Auth::check() && auth::user()->isAdmin != 1))
+    {
         return redirect('/home');
-    }else {
+    }else 
+    {
         return view('/home');
     }
 });
