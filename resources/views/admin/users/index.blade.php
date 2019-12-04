@@ -44,10 +44,11 @@
                                 <td>{{ $p->created_at}}</td>
                                 <td style="font-size: 20px">
                                     @if ($p->isAdmin=='1')
-                                        <a href="{{ route('adminUsers.edit', $p->id) }}"><i class="btn btn-primary">Jadikan User</i></a>
+                                        <a href="{{ route('adminUsers.edit', $p->id) }}" class="mx-2"><i class="btn btn-primary">Jadikan Users</i></a>
                                     @else
-                                        <a href="{{ route('adminUsers.edit', $p->id) }}"><i class="btn btn-secondary">Jadikan Admin</i></a>
+                                        <a href="{{ route('adminUsers.edit', $p->id) }}" class="mx-2"><i class="btn btn-secondary">Jadikan Admin</i></a>
                                     @endif
+                                    |
                                     <form action="{{ route('adminUsers.destroy', $p->id)}}" method="post" class="d-inline">
                                         @csrf
                                         @method('DELETE')

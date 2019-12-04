@@ -8,7 +8,7 @@
             <img src="/images/<?php echo e($place['gambar']); ?>" alt="..." style="width: 697px; height: 455px; margin-top: -407px;">
         </li>
         <li class="list-inline-item">
-          <div id='map' style='width: 400px; height: 300px;'></div>
+          <div id='map' style='width: 400px; height: 220px;'></div>
           <script>
             mapboxgl.accessToken = 'pk.eyJ1IjoicnJhZmlkczE3IiwiYSI6ImNrM2F4dXZrYjA3ajgzbG51M3JrMXR6bnUifQ.ja3BRkAopqWe8Mv7nsj0Ow&libraries=places';
             var map = new mapboxgl.Map({
@@ -18,16 +18,19 @@
           </script>
             <br>
             <h5 style="border: solid 1px #78FFC4; margin-top: -10px; padding: 10px; padding-left: 15px">
-                Buka: <?php echo e($place->buka); ?>-<?php echo e($place->tutup); ?> <br>
+                <b><i class="clock icon"></i> Jam Operasional</b> <br>  <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <?php echo e($place->buka); ?>-<?php echo e($place->tutup); ?> <br>
                 <hr>
-                Tiket: Rp <?php echo e($place->harga_tiket); ?> <br>
+                <i class="money bill alternate icon"></i>
+                <b>Tiket</b> <br> <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Rp <?php echo e($place->harga_tiket); ?> <br>
                 <hr>
                 <button class="btn btn-success" data-toggle="modal" data-target="#BeliTiket" id="Beli" style="width: 370px">Beli Tiket</button>
             </h5>
         </li>
     </ul>
     <ul class="list-inline">
-        <li class="list-inline-item" style="height: 150px; background-color: #E8FAF2; padding: 20px;">
+        <li class="list-inline-item" style="height: 150px; background-color: #EFFBFB; padding: 20px;">
             <h3 class="mb-3">
                 <b> Tentang <?php echo e($place->nama); ?> </b>
                 <br>
@@ -37,11 +40,12 @@
                 <?php echo e($place->deskripsi); ?>
 
             </h4>
-        </li>
+          </li>
     </ul>
 
-<div class="container" style="background-color: #E8FAF2">
-  <div style="font-size: 20px; padding-top:  15px; padding-bot: -15px;">
+<div class="container" style="background-color: #EFFBFB"> <br>
+  <div style="font-size: 23px; padding-top:  15px; padding-bot: -15px;">
+    <i class="comment outline icon"></i>
     <b>Ulasan</b>  
   </div>
     <?php if(Auth::check()): ?>
@@ -51,31 +55,28 @@
     <br>
       <hr>
       <label for="komen" style="font-size: 15px">
-          <b>Tulis Komentar</b>
+        <i class="edit icon"></i>
+        <b>Tulis Komentar</b>
       </label>
+      
       <br>
-      <label style="font-size: 15px">
-        <b style="font-size: 15px">Beri Bintang: </b>
-      </label>
-      <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>
-      <br>
-      <textarea class="form-control" name="content" id="komen" rows="3"></textarea>
+      <textarea class="form-control" name="content" id="komen" rows="3" placeholder="Tuliskan tentang obyek wisata ini"></textarea>
       <input type="hidden" name="place_id" value="<?php echo e($place->id); ?>"> <br>
       <button class="btn btn-primary float-right my-20" type="submit">Submit</button>
     </form>
     <?php endif; ?>
   
-    <br><br>
+    <br><br><br><br>
     
     <?php $__currentLoopData = $place->comments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $comment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
       <div class="card">
-        <h5 class="card-header"><?php echo e($comment->user->name); ?></h5>
+        <h4 class="card-header">
+          <i class="user circle icon"></i>
+          <b><?php echo e($comment->user->name); ?></b> 
+        </h4>
+        <h5 class="card-header"><?php echo e($comment->created_at); ?></h5>
         <div class="card-body">
-          <h5 class="card-title"><?php echo e($comment->content); ?></h5>
+          <h5 class="card-title"><?php echo e($comment->content); ?></h5> <br>
           
         </div>
       </div>

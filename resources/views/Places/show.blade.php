@@ -9,7 +9,7 @@
             <img src="/images/{{ $place['gambar'] }}" alt="..." style="width: 697px; height: 455px; margin-top: -407px;">
         </li>
         <li class="list-inline-item">
-          <div id='map' style='width: 400px; height: 300px;'></div>
+          <div id='map' style='width: 400px; height: 220px;'></div>
           <script>
             mapboxgl.accessToken = 'pk.eyJ1IjoicnJhZmlkczE3IiwiYSI6ImNrM2F4dXZrYjA3ajgzbG51M3JrMXR6bnUifQ.ja3BRkAopqWe8Mv7nsj0Ow&libraries=places';
             var map = new mapboxgl.Map({
@@ -19,16 +19,19 @@
           </script>
             <br>
             <h5 style="border: solid 1px #78FFC4; margin-top: -10px; padding: 10px; padding-left: 15px">
-                Buka: {{ $place->buka }}-{{ $place->tutup }} <br>
+                <b><i class="clock icon"></i> Jam Operasional</b> <br>  <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ $place->buka }}-{{ $place->tutup }} <br>
                 <hr>
-                Tiket: Rp {{ $place->harga_tiket}} <br>
+                <i class="money bill alternate icon"></i>
+                <b>Tiket</b> <br> <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Rp {{ $place->harga_tiket}} <br>
                 <hr>
                 <button class="btn btn-success" data-toggle="modal" data-target="#BeliTiket" id="Beli" style="width: 370px">Beli Tiket</button>
             </h5>
         </li>
     </ul>
     <ul class="list-inline">
-        <li class="list-inline-item" style="height: 150px; background-color: #E8FAF2; padding: 20px;">
+        <li class="list-inline-item" style="height: 150px; background-color: #EFFBFB; padding: 20px;">
             <h3 class="mb-3">
                 <b> Tentang {{ $place->nama }} </b>
                 <br>
@@ -40,8 +43,9 @@
           </li>
     </ul>
 
-<div class="container" style="background-color: #E8FAF2">
-  <div style="font-size: 20px; padding-top:  15px; padding-bot: -15px;">
+<div class="container" style="background-color: #EFFBFB"> <br>
+  <div style="font-size: 23px; padding-top:  15px; padding-bot: -15px;">
+    <i class="comment outline icon"></i>
     <b>Ulasan</b>  
   </div>
     @if (Auth::check())
@@ -50,31 +54,35 @@
     <br>
       <hr>
       <label for="komen" style="font-size: 15px">
-          <b>Tulis Komentar</b>
+        <i class="edit icon"></i>
+        <b>Tulis Komentar</b>
       </label>
-      <br>
-      <label style="font-size: 15px">
+      {{-- <label style="font-size: 15px">
         <b style="font-size: 15px">Beri Bintang: </b>
       </label>
       <span class="fa fa-star"></span>
       <span class="fa fa-star"></span>
       <span class="fa fa-star"></span>
       <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span> --}}
       <br>
-      <textarea class="form-control" name="content" id="komen" rows="3"></textarea>
+      <textarea class="form-control" name="content" id="komen" rows="3" placeholder="Tuliskan tentang obyek wisata ini"></textarea>
       <input type="hidden" name="place_id" value="{{$place->id}}"> <br>
       <button class="btn btn-primary float-right my-20" type="submit">Submit</button>
     </form>
     @endif
   
-    <br><br>
+    <br><br><br><br>
     
     @foreach ($place->comments as $comment)
       <div class="card">
-        <h5 class="card-header">{{ $comment->user->name }}</h5>
+        <h4 class="card-header">
+          <i class="user circle icon"></i>
+          <b>{{ $comment->user->name }}</b> 
+        </h4>
+        <h5 class="card-header">{{ $comment->created_at }}</h5>
         <div class="card-body">
-          <h5 class="card-title">{{ $comment->content }}</h5>
+          <h5 class="card-title">{{ $comment->content }}</h5> <br>
           {{-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> --}}
         </div>
       </div>
