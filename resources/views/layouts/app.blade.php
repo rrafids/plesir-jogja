@@ -33,6 +33,14 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style>
+
+    #menu {
+        position: absolute;
+        background: #fff;
+        padding: 10px;
+        font-family: 'Open Sans', sans-serif;
+    }
+
         .checked {
             color: orange;
         }
@@ -49,7 +57,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent" style="z-index:1" 1>
                     <!-- Left Side Of Navbar -->
                     {{-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> --}}
                     <!-- Right Side Of Navbar -->
@@ -88,7 +96,7 @@
                     </ul>
                 </div> 
         </nav>
-        <div style="background-color: #377559; position: fixed; width: 100%; margin-top: 55px; z-index: 1">
+        <div style="background-color: #377559; position: fixed; width: 100%; margin-top: 55px; z-index: 0.5">
             <div class="container" style=" height: 45px; font-size: 15px">
                 <ul class="nav nav-pills" id="navbars" style="padding-top: 3px; padding-bot: 3px;">
                     <li class="nav-item">
@@ -106,7 +114,7 @@
                 </ul>
             </div>
         </div>
-        
+        <br> <br> <br> <br>
         <main class="py-5" style="background-color: white">
             @yield('content')
         </main>
