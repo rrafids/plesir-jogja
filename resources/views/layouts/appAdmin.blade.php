@@ -91,25 +91,22 @@
             <div class="container" style=" height: 45px; font-size: 15px">
                 <ul class="nav nav-pills" id="navbars" style="padding-top: 3px; padding-bot: 3px;">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/') }}" id="dua" style="color: white">Dashboard</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="{{ url('adminPlaces') }}" id="tiga" style="color: white">
-                            <i class="tag icon"></i>
+                            <i class="map marker outline icon"></i>
                             Obyek Wisata
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" style="color: white">
-                            <i class="calendar alternate outline icon"></i>
-                            Sejarah Pembelian
+                    <li class="nav-item" style="color: white">
+                        <a class="nav-link" href="{{ url('adminUsers') }}" style="color: white">
+                            <i class="address book outline icon" ></i>
+                            Pengguna
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
         
-        <main class="py-4" style="background-color: #EDFEF7">
+        <main class="py-4">
             @yield('content')
         </main>
     </div> 

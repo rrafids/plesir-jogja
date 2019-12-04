@@ -40,7 +40,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #245B43">
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #245B43; position: fixed; width: 100%; z-index: 1">
                 <a class="navbar-brand" href="{{ url('/') }}" style="color: white; font-size: 20px;">
                     <i class="location arrow icon"></i>
                     <b> {{ config('apps.name', 'PlesirJogja.com') }} </b>
@@ -51,7 +51,7 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    {{-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> --}}
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
@@ -86,10 +86,9 @@
                             </li>
                         @endguest
                     </ul>
-                </div>
-                
+                </div> 
         </nav>
-        <div style="background-color: #377559">
+        <div style="background-color: #377559; position: fixed; width: 100%; margin-top: 55px; z-index: 1">
             <div class="container" style=" height: 45px; font-size: 15px">
                 <ul class="nav nav-pills" id="navbars" style="padding-top: 3px; padding-bot: 3px;">
                     <li class="nav-item">
@@ -99,11 +98,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="" id="dua" style="color: white">Paket Wisata</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="{{ url('/places')}}" id="tiga" style="color: white">
-                            <i class="tag icon"></i>
+                            <i class="map marker outline icon"></i>
                             Obyek Wisata
                         </a>
                     </li>
@@ -111,7 +107,7 @@
             </div>
         </div>
         
-        <main class="py-4">
+        <main class="py-5" style="background-color: white">
             @yield('content')
         </main>
     </div> 
