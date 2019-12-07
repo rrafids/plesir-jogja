@@ -15,11 +15,16 @@ class Place extends Model
         return $this->hasMany('App\Comment');
     }
 
+    public function tickets()
+    {
+        return $this->hasMany('App\Ticket');
+    }
+
     public static function boot() {
         parent::boot();
 
         static::deleting(function($user) { // before delete() method call this
-             $user->comments()->delete();
+            $user->comments()->delete();
              // do the rest of the cleanup...
         });
     }

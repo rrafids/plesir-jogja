@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Comment;
 use App\Place;
+use App\Ticket;
 use Illuminate\Http\Request;
 
 class PlacesController extends Controller
@@ -16,7 +17,6 @@ class PlacesController extends Controller
     public function index()
     {
         $places = Place::all();
-        $comments = Comment::all();
         return view('Places.index', compact('places'));
     }
 
@@ -38,7 +38,14 @@ class PlacesController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $place = Place::findOrFail($request->place_id);
+        Ticket::create([
+            'user_id'    => auth()->id(),
+            'place_id'   => $place->id,
+            'kode_tiket' => "$request->kode_tiket"
+        ]);
+
+        return redirect()->back();
     }
 
     /**

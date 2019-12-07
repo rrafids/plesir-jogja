@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Ticket;
+use App\Place;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Http\Requests\TicketRequest;
 
 class TicketsController extends Controller
 {
@@ -26,7 +29,7 @@ class TicketsController extends Controller
     public function create()
     {
         
-        return redirect()->route('adminPlaces.index');
+        // return redirect()->route('adminPlaces.index');
     }
 
     /**
@@ -37,7 +40,17 @@ class TicketsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $place = Place::findOrFail($request->place_id);
+        // dd($request->kode_tiket);
+        
+        Ticket::create([
+            'user_id'    => auth()->id(),
+            'place_id'   => $place->id,
+            'id_pemesanan' => $request->id_pemesanan,
+            'kode_tiket' => $request->kode_tiket
+        ]);
+        
+        return redirect()->back();
     }
 
     /**

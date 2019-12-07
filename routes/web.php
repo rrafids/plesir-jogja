@@ -27,13 +27,14 @@ Route::get('/', function ()
 
 Auth::routes();
 
+Route::post('/buyticket', 'TicketsController@store');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('places', 'PlacesController');
 Route::resource('comments', 'CommentsController');
 Route::resource('schedules', 'SchedulesController');
 Route::resource('adminPlaces', 'AdminPlaceController');
 Route::resource('adminUsers', 'AdminUserController');
-Route::resource('tickets', 'TicketsController');
+// Route::resource('tickets', 'TicketsController');
 
 // Route::get('Places/show', 'CommentsController@index');
 // Route::resource('Places.show', 'CommentsController');

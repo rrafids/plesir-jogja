@@ -117,15 +117,24 @@
         <form action ="show.blade.php" method ="POST" style="font-size: 15px">
           <b>Obyek Wisata :</b> <?php echo e($place->nama); ?> <br>
           <b>Harga    :</b> Rp <?php echo e($place->harga_tiket); ?> <br>
-          <b>ID Pemesanan :</b> <?php echo e(rand()); ?>
+          <b>ID Pemesanan :</b>
+          <?php
+              $id_pemesanan = rand() 
+          ?>
+          <?php echo e($id_pemesanan); ?>
 
           <br>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-        <form action="" method="post" enctype="multipart/form-data">
-            <button type="button" class="btn btn-primary"  data-toggle="modal" id ="Konfirm">Beli</button>
+        <form action="/buyticket" method="post">
+          <?php echo e(csrf_field()); ?>
+
+          <input type="hidden" name="id_pemesanan" value="<?php echo e($id_pemesanan); ?>">
+          <input type="hidden" name="place_id" value="<?php echo e($place->id); ?>">
+          <input type="hidden" value="<?php echo e(rand()); ?>" name="kode_tiket">
+          <button type="submit" name="submit" class="btn btn-primary" data-toggle="modal" id ="Konfirm">Beli</button>
         </form>
       </div>
     </div>
