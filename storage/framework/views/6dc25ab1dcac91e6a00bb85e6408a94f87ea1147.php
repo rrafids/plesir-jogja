@@ -64,7 +64,7 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         <li class="nav-item">
-                            <a href="" style="color: white">
+                            <a href="<?php echo e(url('/baskets')); ?>" style="color: white">
                                 <i class="shopping cart icon mx-3" style="font-size: 20px"></i>
                             </a>
                         </li>

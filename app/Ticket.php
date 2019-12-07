@@ -18,5 +18,4 @@ class Ticket extends Model
         return $this->belongsTo('App\Place');
     }
 
-    protected $time_stamp = false;
 }

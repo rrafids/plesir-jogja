@@ -111,8 +111,6 @@
         </main>
     </div> 
 
-
-
     <script>
         $(document).ready(function(){
             $("#search").on("keyup", function() {

@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Comment;
-use App\Place;
 use App\Ticket;
+use App\User;
 use Illuminate\Http\Request;
 
-class PlacesController extends Controller
+class BasketsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,10 @@ class PlacesController extends Controller
      */
     public function index()
     {
-        $places = Place::all();
-        return view('Places.index', compact('places'));
+        
+        $users = User::all();
+        dd($users->tickets);
+        return view('Baskets.index', compact('users'));
     }
 
     /**
@@ -38,14 +39,7 @@ class PlacesController extends Controller
      */
     public function store(Request $request)
     {
-        $place = Place::findOrFail($request->place_id);
-        Ticket::create([
-            'user_id'    => auth()->id(),
-            'place_id'   => $place->id,
-            'kode_tiket' => "$request->kode_tiket"
-        ]);
-
-        return redirect()->back();
+        //
     }
 
     /**
@@ -54,10 +48,9 @@ class PlacesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Place $place)
-    {              
-        
-        return view('Places.show', compact('place'));
+    public function show($id)
+    {
+        //
     }
 
     /**

@@ -28,6 +28,10 @@ Route::get('/', function ()
 Auth::routes();
 
 Route::post('/buyticket', 'TicketsController@store');
+Route::resource('baskets', 'BasketsController');
+
+
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('places', 'PlacesController');
 Route::resource('comments', 'CommentsController');
