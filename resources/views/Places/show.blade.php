@@ -123,14 +123,22 @@
         <form action ="show.blade.php" method ="POST" style="font-size: 15px">
           <b>Obyek Wisata :</b> {{ $place->nama }} <br>
           <b>Harga    :</b> Rp {{ $place->harga_tiket }} <br>
-          <b>ID Pemesanan :</b> {{ rand() }}
+          <b>ID Pemesanan :</b>
+          @php
+              $id_pemesanan = rand() 
+          @endphp
+          {{ $id_pemesanan }}
           <br>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-        <form action="" method="post" enctype="multipart/form-data">
-            <button type="button" class="btn btn-primary"  data-toggle="modal" id ="Konfirm">Beli</button>
+        <form action="/buyticket" method="post">
+          {{ csrf_field() }}
+          <input type="hidden" name="id_pemesanan" value="{{ $id_pemesanan }}">
+          <input type="hidden" name="place_id" value="{{ $place->id }}">
+          <input type="hidden" value="{{ rand() }}" name="kode_tiket">
+          <button type="submit" name="submit" class="btn btn-primary" data-toggle="modal" id ="Konfirm">Beli</button>
         </form>
       </div>
     </div>

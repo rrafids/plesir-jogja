@@ -19,6 +19,7 @@ class CreateTableTickets extends Migration
             $table->bigInteger('place_id')->unsigned();
             $table->string('kode_pembayaran');
             $table->string('kode_tiket');
+            
         });
         Schema::table('tickets', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users');
