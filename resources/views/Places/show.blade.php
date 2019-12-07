@@ -93,7 +93,7 @@
     @endif
   
     <br><br><br><br>
-    
+
     @foreach ($place->comments as $comment)
       <div class="card">
         <h4 class="card-header">
@@ -108,6 +108,7 @@
       </div>
       <hr>
     @endforeach
+    
 </div>
 
 <div class="modal fade center" id="BeliTiket" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

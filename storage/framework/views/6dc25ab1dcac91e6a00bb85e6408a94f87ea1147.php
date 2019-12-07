@@ -48,7 +48,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #245B43; position: fixed; width: 100%; z-index: 1">
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #245B43; position: fixed; width: 100%; z-index: 100">
                 <a class="navbar-brand" href="<?php echo e(url('/')); ?>" style="color: white; font-size: 20px;">
                     <i class="location arrow icon"></i>
                     <b> <?php echo e(config('apps.name', 'PlesirJogja.com')); ?> </b>
@@ -64,7 +64,7 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         <li class="nav-item">
-                            <a href="" style="color: white">
+                            <a href="<?php echo e(url('/baskets')); ?>" style="color: white">
                                 <i class="shopping cart icon mx-3" style="font-size: 20px"></i>
                             </a>
                         </li>
@@ -79,11 +79,11 @@
                             </li>
                         <?php else: ?>
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" style="color: white" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" style="color: white; z-index: 30" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     <?php echo e(Auth::user()->name); ?> <span class="caret"></span>
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style="white; z-index: 30">
                                     <a class="dropdown-item" href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         <?php echo e(__('Logout')); ?>
 
@@ -97,7 +97,7 @@
                     </ul>
                 </div> 
         </nav>
-        <div style="background-color: #377559; position: fixed; width: 100%; margin-top: 55px; z-index: 0.5">
+        <div style="background-color: #377559; position: fixed; width: 100%; margin-top: 55px; z-index: 20">
             <div class="container" style=" height: 45px; font-size: 15px">
                 <ul class="nav nav-pills" id="navbars" style="padding-top: 3px; padding-bot: 3px;">
                     <li class="nav-item">
