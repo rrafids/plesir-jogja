@@ -64,7 +64,7 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         <li class="nav-item">
-                            <a href="{{ url('/baskets') }}" style="color: white">
+                            <a href="{{ url('/baskets/show') }}" style="color: white">
                                 <i class="shopping cart icon mx-3" style="font-size: 20px"></i>
                             </a>
                         </li>
@@ -103,6 +103,12 @@
                         <a class="nav-link" href="{{ url('/schedules') }}" id="satu" style="color: white">
                             <i class="calendar alternate outline icon"></i>
                             Jadwal Saya
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/baskets/show')}}" id="tiga" style="color: white">
+                            <i class="ticket alternate icon"></i>
+                            Tiket Saya
                         </a>
                     </li>
                     <li class="nav-item">

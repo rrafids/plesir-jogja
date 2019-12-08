@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Ticket;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BasketsController extends Controller
 {
@@ -14,11 +15,9 @@ class BasketsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        
+    {   
         $users = User::all();
-        dd($users->tickets);
-        return view('Baskets.index', compact('users'));
+        return view('Baskets.index', compact('users')); 
     }
 
     /**
@@ -48,9 +47,11 @@ class BasketsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //
+
+        $user = Auth::user();
+        return view('Baskets.show', compact('user'));
     }
 
     /**

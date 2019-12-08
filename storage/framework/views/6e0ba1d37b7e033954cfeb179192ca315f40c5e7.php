@@ -27,7 +27,7 @@
 
                                             </p>
                                             <p class="card-text">Rp <?php echo e($place['harga_tiket']); ?></p>
-                                            <a href="#" class="btn btn-primary">Beli Tiket</a>
+                                            <a href="/places/<?php echo e($place->id); ?>" class="btn btn-primary">Lihat Detail</a>
                                         </div>
                                     </div>
                                 </li>
