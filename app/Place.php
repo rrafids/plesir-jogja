@@ -28,4 +28,9 @@ class Place extends Model
              // do the rest of the cleanup...
         });
     }
+
+    public function schedules()
+    {
+        return $this->hasMany('App\Schedule');
+    }
 }

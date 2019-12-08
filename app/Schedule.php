@@ -6,16 +6,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class Schedule extends Model
 {
-    protected $fillable = ['place_id', 'date', 'time_start', 'time_end'];
+    protected $dates = ['date'];
+    protected $fillable =['id','user_id','place_id','date_id','day','hourStart','hourEnd'];
 
     public function user()
     {
         return $this->belongsTo('App\User');
-
     }
 
-    public function Place() 
+    public function places()
     {
-        return $this->hasMany('App\Place');
+        return $this->belongsTo('App\Place', 'place_id');
     }
+
+    public function date()
+    {
+        return $this->belongsTo('App\Date');
+    }
+    
+
 }
