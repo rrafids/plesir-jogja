@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Place;
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Ticket extends Model

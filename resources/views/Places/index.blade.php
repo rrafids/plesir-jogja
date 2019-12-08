@@ -28,7 +28,7 @@
                                                 {{ $place->buka }} <a style="color: blue">-</a> {{ $place['tutup'] }}
                                             </p>
                                             <p class="card-text">Rp {{ $place['harga_tiket'] }}</p>
-                                            <a href="#" class="btn btn-primary">Beli Tiket</a>
+                                            <a href="/places/{{ $place->id }}" class="btn btn-primary">Lihat Detail</a>
                                         </div>
                                     </div>
                                 </li>

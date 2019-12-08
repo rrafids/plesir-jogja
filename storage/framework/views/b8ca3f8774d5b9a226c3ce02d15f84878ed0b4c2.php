@@ -87,7 +87,7 @@
     <?php endif; ?>
   
     <br><br><br><br>
-    
+
     <?php $__currentLoopData = $place->comments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $comment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
       <div class="card">
         <h4 class="card-header">
@@ -102,6 +102,7 @@
       </div>
       <hr>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+    
 </div>
 
 <div class="modal fade center" id="BeliTiket" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
