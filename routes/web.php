@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/', function () 
 {
     if(Auth::check() && auth::user()->isAdmin == 1)
@@ -27,10 +28,10 @@ Route::get('/', function ()
 
 Auth::routes();
 
-Route::post('/buyticket', 'TicketsController@store');
+Route::post('/buyticket', 'TicketsController@store')->middleware('auth');
+
+
 Route::resource('baskets', 'BasketsController');
-
-
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('places', 'PlacesController');

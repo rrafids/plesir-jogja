@@ -19,6 +19,12 @@ class SchedulesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {   
         // $tgl = Schedule::all()->groupBy(function($date) {

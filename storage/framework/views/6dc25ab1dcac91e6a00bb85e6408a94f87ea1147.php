@@ -48,8 +48,8 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #245B43; position: fixed; width: 100%; z-index: 100">
-                <a class="navbar-brand" href="<?php echo e(url('/')); ?>" style="color: white; font-size: 20px;">
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: transparent; position: fixed; width: 100%; z-index: 100;">
+                <a class="navbar-brand" href="<?php echo e(url('/')); ?>" style="color: green; font-size: 20px; opacity: 100%">
                     <i class="location arrow icon"></i>
                     <b> <?php echo e(config('apps.name', 'PlesirJogja.com')); ?> </b>
                 </a>
@@ -63,11 +63,6 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                        <li class="nav-item">
-                            <a href="<?php echo e(url('/baskets/show')); ?>" style="color: white">
-                                <i class="shopping cart icon mx-3" style="font-size: 20px"></i>
-                            </a>
-                        </li>
                         <?php if(auth()->guard()->guest()): ?>
                         <?php if(Route::has('register')): ?>
                             <li class="nav-item">
@@ -97,23 +92,23 @@
                     </ul>
                 </div> 
         </nav>
-        <div style="background-color: #377559; position: fixed; width: 100%; margin-top: 55px; z-index: 20">
+        <div style="background-color: transparent; position: fixed; width: 100%; margin-top: 55px; z-index: 20; color: green">
             <div class="container" style=" height: 45px; font-size: 15px">
                 <ul class="nav nav-pills" id="navbars" style="padding-top: 3px; padding-bot: 3px;">
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo e(url('/schedules')); ?>" id="satu" style="color: white">
+                        <a class="nav-link" href="<?php echo e(url('/schedules')); ?>" id="satu" style="color:green">
                             <i class="calendar alternate outline icon"></i>
                             Jadwal Saya
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo e(url('/baskets/show')); ?>" id="tiga" style="color: white">
+                        <a class="nav-link" href="<?php echo e(url('/baskets/show')); ?>" id="tiga" style="color:green">
                             <i class="ticket alternate icon"></i>
                             Tiket Saya
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo e(url('/places')); ?>" id="tiga" style="color: white">
+                        <a class="nav-link" href="<?php echo e(url('/places')); ?>" id="tiga" style="color:green">
                             <i class="map marker outline icon"></i>
                             Obyek Wisata
                         </a>
