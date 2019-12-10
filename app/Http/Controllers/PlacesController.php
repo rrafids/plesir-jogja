@@ -6,6 +6,7 @@ use App\Comment;
 use App\Place;
 use App\Ticket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PlacesController extends Controller
 {
@@ -36,15 +37,18 @@ class PlacesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    
     public function store(Request $request)
     {
-        $place = Place::findOrFail($request->place_id);
-        Ticket::create([
-            'user_id'    => auth()->id(),
-            'place_id'   => $place->id,
-            'kode_tiket' => "$request->kode_tiket"
-        ]);
-
+        $this->middleware('auth');
+            $place = Place::findOrFail($request->place_id);
+            Ticket::create([
+                'user_id'    => auth()->id(),
+                'place_id'   => $place->id,
+                'kode_tiket' => "$request->kode_tiket"
+            ]);
+        
+        
         return redirect()->back();
     }
 
