@@ -129,13 +129,33 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-        <form action="/buyticket" method="post">
-          <?php echo e(csrf_field()); ?>
+        <button data-toggle="modal" data-target="#konfirmasi" data-dismiss="modal" type="submit" class="btn btn-primary" id ="Konfirm">Beli</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-          <input type="hidden" name="id_pemesanan" value="<?php echo e($id_pemesanan); ?>">
-          <input type="hidden" name="place_id" value="<?php echo e($place->id); ?>">
-          <input type="hidden" value="<?php echo e(rand()); ?>" name="kode_tiket">
-          <button type="submit" name="submit" class="btn btn-primary" data-toggle="modal" id ="Konfirm">Beli</button>
+<div class="modal fade center" id="konfirmasi" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">
+          Pembelian Tiket Berhasil
+          <i class="green check icon"></i>
+        </h3>
+        
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-footer">
+        <form action="/buyticket" method="post">
+            <?php echo e(csrf_field()); ?>
+
+            <input type="hidden" name="id_pemesanan" value="<?php echo e($id_pemesanan); ?>">
+            <input type="hidden" name="place_id" value="<?php echo e($place->id); ?>">
+            <input type="hidden" value="<?php echo e(rand()); ?>" name="kode_tiket">
+            <button type="submit" data-toogle="modal" class="btn btn-primary">Ok</button>
         </form>
       </div>
     </div>
@@ -151,31 +171,31 @@ $(document).ready(function () {
       });
     });
 
-    $('#Konfirm').on('click', function () {
-      $('#KonfirmBeli').modal({
+    $('#konfirm').on('click', function () {
+      $('#konfirmasi').modal({
         show: true
       });
     });
 
-    $(document).on('show.bs.modal', '.modal', function () {
-			var zIndex = calculateZIndex();
+    // $(document).on('show.bs.modal', '.modal', function () {
+		// 	var zIndex = calculateZIndex();
 
-			$(this).css('z-index', zIndex);
+		// 	$(this).css('z-index', zIndex);
 
-			setTimeout(function () {
-				$('.modal-backdrop').not('.modal-stack').css('z-index', zIndex - 1).addClass('modal-stack');
-			}, 0);
-		})
-		$(document).on('hidden.bs.modal', '.modal', function () {
-			$('.modal:visible').length && $(document.body).addClass('modal-open');
-		})
-		function calculateZIndex() {
-			var zIndex = Math.max.apply(null, Array.prototype.map.call(document.querySelectorAll('*'), function (el) {
-				return +el.style.zIndex;
-			})) + 10;
+		// 	setTimeout(function () {
+		// 		$('.modal-backdrop').not('.modal-stack').css('z-index', zIndex - 1).addClass('modal-stack');
+		// 	}, 0);
+		// })
+		// $(document).on('hidden.bs.modal', '.modal', function () {
+		// 	$('.modal:visible').length && $(document.body).addClass('modal-open');
+		// })
+		// function calculateZIndex() {
+		// 	var zIndex = Math.max.apply(null, Array.prototype.map.call(document.querySelectorAll('*'), function (el) {
+		// 		return +el.style.zIndex;
+		// 	})) + 10;
 
-			return zIndex;
-		}
+		// 	return zIndex;
+		// }
 });
     </script>
 <?php $__env->stopSection(); ?>

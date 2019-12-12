@@ -11,21 +11,21 @@
         <div class="carousel-item active">
         <img src="{{ url('/images/bunga_matahari.jpg') }}" class="d-block w-100" alt="..." style="height: 1027px; opacity: 85%">
         <div class="carousel-caption d-none d-md-block">
-            <button class="btn btn-outline-success btn-lg" style="color: white; border: white; font-size: 30px"><b>Cari Wisata</b></button>
+            <a href="{{ url('/places')}}" class="btn btn-outline-success btn-lg" style="color: white; border: white; font-size: 30px"><b>Cari Wisata</b></a>
             <h3>Temukan tujuan wisatamu</h3>
         </div>
     </div>
     <div class="carousel-item" style="background-color: green">
         <img src="{{ url('/images/tiket.jpg') }}" class="d-block w-100" alt="..." style="height: 1027px; opacity: 85%">
         <div class="carousel-caption d-none d-md-block">
-            <button class="btn btn-outline-success btn-lg" style="color: white; border: white; font-size: 30px"><b>Beli Tiket</b></button>
+            <a href="{{ url('/places')}}" class="btn btn-outline-success btn-lg" style="color: white; border: white; font-size: 30px"><b>Beli Tiket</b></a>
             <h3>Beli tiketmu secara online</h3>
         </div>
     </div>
     <div class="carousel-item" style="background-color: green">
         <img src="{{ url('/images/jam.jpg') }}" class="d-block w-100" alt="..." style="height: 1027px; opacity: 85%">
         <div class="carousel-caption d-none d-md-block">
-            <button class="btn btn-outline-success btn-lg" style="color: white; border: white; font-size: 30px"><b>Atur Jadwal</b></button>
+            <a href="{{ url('/schedules') }}" class="btn btn-outline-success btn-lg" style="color: white; border: white; font-size: 30px"><b>Atur Jadwal</b></a>
             <h3>Atur jadwal wisatamu</h3>
         </div>
     </div>
@@ -50,7 +50,7 @@
     
 </div>
 
-<div class="definition">
+<div class="definition" mb-5>
         <div class="def_title">
             Apa itu <b>PlesirJogja.com</b>?
         </div>
@@ -63,7 +63,7 @@
 
 <br>
 
-<div class="container">
+<div class="container mt-5">
     <div class="ui segment">
         <div class="about_title">
             PlesirJogja.com

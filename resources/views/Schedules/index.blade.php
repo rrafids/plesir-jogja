@@ -67,12 +67,13 @@
                     </table>
                     @endforeach
                     @else
-                        <H1>Tidak ada jadwal yang dibuat</H1>
+                        <h2>Belum ada jadwal</h2>
+                        <button class="btn btn-success">Buat Jadwal</button>
                     @endif
                 </div>
             </div>
         </div>
-<script>
+{{-- <script>
         // Set the date we're counting down to
         var countDownDate = new Date('{{$p->date}}').getTime();
         
@@ -102,6 +103,6 @@
           }
         }, 1000);
 
-        </script>
+        </script> --}}
         
-            @endsection
+@endsection

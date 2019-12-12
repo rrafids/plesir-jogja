@@ -34,6 +34,13 @@
     <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
     <style>
 
+    body {
+        /* background-image: url("/images/lampu.jpg"); */
+        background-size: 100%;
+        width: 100%;
+        height: 100%;
+    }
+
     #menu {
         position: absolute;
         background: #fff;
@@ -48,15 +55,14 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: transparent; position: fixed; width: 100%; z-index: 100;">
-                <a class="navbar-brand" href="<?php echo e(url('/')); ?>" style="color: green; font-size: 20px; opacity: 100%">
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #4F874C; position: fixed; width: 100%; z-index: 100; opacity: 90%">
+                <a class="navbar-brand" href="<?php echo e(url('/')); ?>" style="color: white; font-size: 20px; opacity: 100%">
                     <i class="location arrow icon"></i>
                     <b> <?php echo e(config('apps.name', 'PlesirJogja.com')); ?> </b>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="<?php echo e(__('Toggle navigation')); ?>">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div class="collapse navbar-collapse" id="navbarSupportedContent" style="z-index:1" 1>
                     <!-- Left Side Of Navbar -->
                     
@@ -66,7 +72,7 @@
                         <?php if(auth()->guard()->guest()): ?>
                         <?php if(Route::has('register')): ?>
                             <li class="nav-item">
-                                <a class="btn btn-outline-success mx-3" href="<?php echo e(route('register')); ?>" style="font-size: 15px;"><?php echo e(__('Register')); ?></a>
+                                <a class="btn btn-outline-success mx-3" href="<?php echo e(route('register')); ?>" style="font-size: 15px; color: white; border-color: white"><?php echo e(__('Register')); ?></a>
                             </li>
                         <?php endif; ?>
                             <li class="nav-item">
@@ -92,23 +98,23 @@
                     </ul>
                 </div> 
         </nav>
-        <div style="background-color: transparent; position: fixed; width: 100%; margin-top: 55px; z-index: 20; color: green">
+        <div style="background-color: #579654; position: fixed; width: 100%; margin-top: 55px; z-index: 20; opacity: 90%; color: white; height: 55px">
             <div class="container" style=" height: 45px; font-size: 15px">
-                <ul class="nav nav-pills" id="navbars" style="padding-top: 3px; padding-bot: 3px;">
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?php echo e(url('/schedules')); ?>" id="satu" style="color:green">
+                <ul class="nav nav-pills" id="navbars" style="padding-top: 3px; padding-bot: 7px; color: white">
+                    <li class="nav-item mx-2 pt-2">
+                        <a class="nav-link btn btn-outline-success" href="<?php echo e(url('/schedules')); ?>" id="satu" style="color:white; border-color: white">
                             <i class="calendar alternate outline icon"></i>
                             Jadwal Saya
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?php echo e(url('/baskets/show')); ?>" id="tiga" style="color:green">
+                    <li class="nav-item mx-2 pt-2">
+                        <a class="nav-link btn btn-outline-success" href="<?php echo e(url('/baskets/show')); ?>" id="tiga" style="color:white; border-color: white">
                             <i class="ticket alternate icon"></i>
                             Tiket Saya
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?php echo e(url('/places')); ?>" id="tiga" style="color:green">
+                    <li class="nav-item mx-2 pt-2">
+                        <a class="nav-link btn btn-outline-success" href="<?php echo e(url('/places')); ?>" id="tiga" style="color:white; border-color: white">
                             <i class="map marker outline icon"></i>
                             Obyek Wisata
                         </a>
@@ -117,22 +123,23 @@
             </div>
         </div>
         <br> <br> <br> <br>
-        <main class="py-5" style="background-color: white">
+
+        <main class="py-5" style="background-color: transparent">
             <?php echo $__env->yieldContent('content'); ?>
         </main>
     </div> 
 
 
     <script>
-    $(document).ready(function() {
-        $("#search").on("keyup", function() {
-            var value = $(this).val().toLowerCase();
-            $('#tabel li').filter(function() {
-                $(this).toggle($(this).find('a').text().toLowerCase().indexOf(value) > -1)
+        $(document).ready(function() {
+            $("#search").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $('#tabel li').filter(function() {
+                    $(this).toggle($(this).find('a').text().toLowerCase().indexOf(value) > -1)
+                });
+                console.log("ok");
             });
-            console.log("ok");
         });
-    });
     </script>
 
 </body>
