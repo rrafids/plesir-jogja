@@ -1,32 +1,24 @@
 <?php $__env->startSection('content'); ?>
+
+
     <div class="container">
         <div class="row">
             <div class="col-30">
-                <h1 class="my-3 mx-3" style="font-weight: bold">
-                    <img src="/images/place.png" alt="" style="width: 35px">
+                <h1 class="mt-5 mb-5 ml-2" style="font-weight: bold; color: green">
+                    <img src="/images/beach.png" alt="" style="width: 200px"> <br> <br>
                     Obyek Wisata
-                </h1>
-                <div class="input-group mt-5 mb-4" style="width: 535px">
-                    <input type="search" class="cari form-control ml-3" placeholder="Cari Obyek Wisata..." name="search" id="search">
-                    <div class="input-group-append">
-                        <span class="input-group-text" id="basic-addon2">Search</span>
-                    </div>
+                </h1> <br> 
+                <div class="input-group ml-2" style="width: 300px; margin-top: -20px">
+                    <input type="search" class="cari form-control" placeholder="Cari Obyek Wisata..." name="search" id="search">
                 </div>
                 <ul class="list-inline" id="tabel">
                     <?php $__currentLoopData = $places; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $place): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <li class="list-inline-item my-3 mx-3">
-                                    <div class="card" style="width: 18rem">
-                                        <img src="/images/<?php echo e($place['gambar']); ?>" class="card-img-top" style="width: 250px; height: 150px" alt="...">
-                                        <div class="card-body">
-                                            <a href="/places/<?php echo e($place->id); ?>"><h5 class="card-title"><?php echo e($place['nama']); ?></h5></a> <br>
-                                            <p class="card-text" style="height: 180px"><?php echo e($place['deskripsi']); ?></p>
-                                            <p class="card-text">
-                                                <a style="color: blue">Buka: </a>  <br>
-                                                <?php echo e($place->hari); ?>,
-                                                <?php echo e($place->buka); ?> <a style="color: blue">-</a> <?php echo e($place['tutup']); ?>
-
-                                            </p>
-                                            <p class="card-text">Rp <?php echo e($place['harga_tiket']); ?></p>
+                            <li class="list-inline-item my-3 mx-2">
+                                    <div class="card" style="width: 25rem">
+                                        <img src="/images/<?php echo e($place['gambar']); ?>" class="card-img" style="width: 350px; height: 300px;" alt="...">
+                                        <div class="card-body" style="margin-top: -150px; color: white">
+                                            <a href="/places/<?php echo e($place->id); ?>" ><h2 style="color: white; font-weight: bold" class="card-img-top"><?php echo e($place['nama']); ?></h2></a> <br>
+                                            <br>
                                             <a href="/places/<?php echo e($place->id); ?>" class="btn btn-primary">Lihat Detail</a>
                                         </div>
                                     </div>
