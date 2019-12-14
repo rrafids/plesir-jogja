@@ -102,7 +102,6 @@
       </div>
       <hr>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-    
 </div>
 
 <div class="modal fade center" id="BeliTiket" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
