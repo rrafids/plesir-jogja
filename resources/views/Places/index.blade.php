@@ -45,6 +45,7 @@
                                     <img src="/images/{{ $place['gambar'] }}" class="card-img" style="width: 350px; height: 300px;" alt="...">
                                     <div class="card-body" style="margin-top: -150px; color: white">
                                         <a href="/places/{{ $place->id }}" ><h2 style="color: white; font-weight: bold" class="card-img-top">{{ $place['nama'] }}</h2></a> <br>
+                                        <h4><b style="color: #A1DA9E">{{ $place->rating }}</b>/5</h4>
                                         <br>
                                         <a href="/places/{{ $place->id }}" class="btn btn-primary" style="margin-left: 220px">Lihat Detail</a>
                                     </div>

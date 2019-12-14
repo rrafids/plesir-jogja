@@ -177,7 +177,6 @@ class AdminPlaceController extends Controller
             'price' => 'required|numeric',
             'facl' => 'required',
             'desc' => 'required',                        
-               
         ], $messages, $attributes);
 
         if ($request->file('gambar')){

@@ -45,8 +45,21 @@ class CommentsController extends Controller
             'place_id'=>$place->id,
             'user_id'=>auth()->id(),
             'content'=>$request->content,
+            'rating'=>$request->rating
         ]);
 
+        if($place->rating == 0)
+        {
+            $place->rating = $request->rating;
+        } else 
+        {
+            $place->rating = ($place->rating + $request->rating)/2;
+        }
+
+        $place->reviews++;
+
+        $place->save();
+        
         return redirect()->back();
     }
 
