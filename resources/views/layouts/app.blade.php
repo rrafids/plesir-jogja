@@ -71,7 +71,14 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style>
+    .star-rating {
+        line-height:32px;
+        font-size:2em;
+    }
 
+    .star-rating .fa-star{
+        color: yellow;
+    }
     body {
         /* background-image: url("/images/lampu.jpg"); */
         background-size: 100%;
@@ -139,7 +146,7 @@
             <div class="container" style=" height: 45px; font-size: 15px">
                 <ul class="nav nav-pills" id="navbars" style="padding-top: 3px; padding-bot: 7px; color: white">
                     <li class="nav-item mx-2 pt-2">
-                        <a class="nav-link btn btn-outline-success" href="{{ url('/schedules') }}" id="satu" style="color:white; border-color: white">
+                        <a class="nav-link btn btn-outline-success" href="{{ url('/schedules/show') }}" id="satu" style="color:white; border-color: white">
                             <i class="calendar alternate outline icon"></i>
                             Jadwal Saya
                         </a>

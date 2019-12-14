@@ -27,12 +27,9 @@ class SchedulesController extends Controller
     
     public function index()
     {   
-        // $tgl = Schedule::all()->groupBy(function($date) {
-        //         return \Carbon\Carbon::parse($date->date)->format('d-M-y');
-        //         })->sortByDesc('date')->first();
-
-        $schedules = Date::all()->sortBy('date')->all();
-        return view('Schedules.index', compact('schedules'));
+        
+        $user = Auth::user();
+        return view('Schedules.show', compact('user'));
     }
 
     /**
@@ -55,36 +52,7 @@ class SchedulesController extends Controller
     public function store(Request $request)
     {   
         $tmpt = $request->nama;
-        $plc = Place::where('nama', 'like', "%".$request->nama."%")
-                        ->first();
-        // $schdl=Schedule::create([
-        //     'place_id'=>$plc->id,
-        //     'user_id'=>auth()->id(),
-        //     'day' => $request->day,
-        //     'hourStart' => $request->hourStart,
-        //     'hourEnd' => $request->hourEnd,
-        // ]);
-
-
-        // $tgl = Date::where('date', 'like', "%".$request->date."%")->first();
-        // if($tgl==true){
-        //     ScheduleDate::create([
-        //         'date_id'=>$tgl->id,
-        //         'schedule_id'=>$schdl->id,
-        //     ]);
-        // }else{
-        //     Date::create([
-        //         'date' => $request->date,
-        //     ]);
-        //     $tgl2 = Date::where('date', 'like', "%".$request->date."%")->first();
-        //     ScheduleDate::create([
-        //         'date_id'=>$tgl2->id,
-        //         'schedule_id'=>$schdl->id,
-        //     ]);
-        // }
-
-        
-
+        $plc = Place::where('nama', 'like', "%".$request->nama."%")->first();
         $tgl = Date::where('date', 'like', "%".$request->date."%")->first();
         if($tgl==true){
             $schdl=Schedule::create([
@@ -96,9 +64,12 @@ class SchedulesController extends Controller
                 'hourEnd' => $request->hourEnd,
         ]);
         }else{
+
             Date::create([
                 'date' => $request->date,
+                'created_at' => $request->date
             ]);
+
             $tgl2 = Date::where('date', 'like', "%".$request->date."%")->first();
             $schdl=Schedule::create([
                 'date_id'=>$tgl2->id,
@@ -110,10 +81,8 @@ class SchedulesController extends Controller
         ]);
         }
 
-        
         return redirect()->route('schedules.index');
-
-        }
+    }
 
     /**
      * Display the specified resource.
@@ -123,7 +92,9 @@ class SchedulesController extends Controller
      */
     public function show($id)
     {
-        //
+        // $user = Date::all()->sortBy('date')->all();
+        $user = Auth::user();
+        return view('Schedules.show', compact('user'));
     }
 
     /**
@@ -175,7 +146,6 @@ class SchedulesController extends Controller
         }
         $place->save();
         return redirect()->route('schedules.index');
-    
     }
 
     /**

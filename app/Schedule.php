@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Date;
 use Illuminate\Database\Eloquent\Model;
 
 class Schedule extends Model
@@ -21,8 +22,8 @@ class Schedule extends Model
 
     public function date()
     {
-        return $this->belongsTo('App\Date');
+        return $this->belongsTo('App\Date')->latest();
     }
     
-
+    public $timestamps = false;
 }

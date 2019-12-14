@@ -3,7 +3,14 @@
 
 <div class="container">
     <h2><b>{{ $place->nama }}</b></h2>
-    <h5>Candi</h5>
+
+    <div class="star-rating">
+      <h4 >
+        <b style="color: green">{{ $place->rating }}</b> / 5  
+      </h4>
+      <h5 class="py-1 px-1" style="border: green solid 1px; width: 69px; color: green">{{ $place->reviews }} Ulasan</h5>
+    </div>
+
     <ul class="list-inline my-3">
         <li class="list-inline-item" >
             <img src="/images/{{ $place['gambar'] }}" alt="..." style="width: 697px; height: 455px; margin-top: -407px;">
@@ -86,9 +93,18 @@
       <span class="fa fa-star"></span>
       <span class="fa fa-star"></span> --}}
       <br>
-      <textarea class="form-control" name="content" id="komen" rows="3" placeholder="Tuliskan tentang obyek wisata ini"></textarea>
+      <div class="star-rating"> 
+          &nbsp;&nbsp;&nbsp;
+          <span class="fa fa-star-o" data-rating="1"></span>
+          <span class="fa fa-star-o" data-rating="2"></span>
+          <span class="fa fa-star-o" data-rating="3"></span>
+          <span class="fa fa-star-o" data-rating="4"></span>
+          <span class="fa fa-star-o" data-rating="5"></span>
+          <input type="hidden" name="rating" class="rating-value" value="3">
+      </div> <br>
+      <textarea class="form-control mx-4 " style="width: 1030px" name="content" id="komen" rows="3" placeholder="Tuliskan tentang obyek wisata ini"></textarea>
       <input type="hidden" name="place_id" value="{{$place->id}}"> <br>
-      <button class="btn btn-primary float-right my-20" type="submit">Submit</button>
+      <button class="btn btn-primary float-right" style="margin-right: 30px" type="submit">Submit</button>
     </form>
     @endif
   
@@ -179,26 +195,28 @@ $(document).ready(function () {
         show: true
       });
     });
-
-    // $(document).on('show.bs.modal', '.modal', function () {
-		// 	var zIndex = calculateZIndex();
-
-		// 	$(this).css('z-index', zIndex);
-
-		// 	setTimeout(function () {
-		// 		$('.modal-backdrop').not('.modal-stack').css('z-index', zIndex - 1).addClass('modal-stack');
-		// 	}, 0);
-		// })
-		// $(document).on('hidden.bs.modal', '.modal', function () {
-		// 	$('.modal:visible').length && $(document.body).addClass('modal-open');
-		// })
-		// function calculateZIndex() {
-		// 	var zIndex = Math.max.apply(null, Array.prototype.map.call(document.querySelectorAll('*'), function (el) {
-		// 		return +el.style.zIndex;
-		// 	})) + 10;
-
-		// 	return zIndex;
-		// }
 });
-    </script>
+
+var $star_rating = $('.star-rating .fa');
+
+var SetRatingStar = function() {
+  return $star_rating.each(function() {
+    if (parseInt($star_rating.siblings('input.rating-value').val()) >= parseInt($(this).data('rating'))) {
+      return $(this).removeClass('fa-star-o').addClass('fa-star');
+    } else {
+      return $(this).removeClass('fa-star').addClass('fa-star-o');
+    }
+  });
+};
+
+$star_rating.on('click', function() {
+  $star_rating.siblings('input.rating-value').val($(this).data('rating'));
+  return SetRatingStar();
+});
+
+SetRatingStar();
+$(document).ready(function() {
+
+});
+</script>
 @endsection

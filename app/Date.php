@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Date extends Model
 {
-    protected $fillable =['id','date'];
+    protected $fillable =['id','date', 'created_at'];
     public function schedule()
     {
         return $this->hasMany('App\Schedule');
@@ -15,7 +15,7 @@ class Date extends Model
         parent::boot();
 
         static::deleting(function($user) { // before delete() method call this
-             $user->schedule()->delete();
+            $user->schedule()->delete();
              // do the rest of the cleanup...
         });
     }
