@@ -108,7 +108,6 @@
       </div>
       <hr>
     @endforeach
-    
 </div>
 
 <div class="modal fade center" id="BeliTiket" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
