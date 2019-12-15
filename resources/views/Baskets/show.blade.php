@@ -3,8 +3,6 @@
 @section('content')
 
 <div class="container">
-  
-    
     <div>
         <div class="card card-body">
             <div class="card-body">
@@ -13,7 +11,8 @@
                 <i class="green ticket alternate icon"></i> <br> <br>
               </h4>
               <input type="search" class="cari form-control ml-3" placeholder="Cari Tiket..." name="search" id="search" style="width: 250px">
-                <ul class="list-inline" id="tabel">
+              
+              <ul class="list-inline" id="tabel">
                     @foreach($user->tickets as $ticket)
                             <li class="list-inline-item my-3 mx-3">
                                     <div class="card" style="width: 16rem">
@@ -34,4 +33,6 @@
         </div>
     </div>
 </div>
+
+
 @endsection

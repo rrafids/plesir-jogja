@@ -84,14 +84,6 @@
         <i class="edit icon"></i>
         <b>Tulis Komentar</b>
       </label>
-      {{-- <label style="font-size: 15px">
-        <b style="font-size: 15px">Beri Bintang: </b>
-      </label>
-      <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span>
-      <span class="fa fa-star"></span> --}}
       <br>
       <div class="star-rating"> 
           &nbsp;&nbsp;&nbsp;
@@ -100,15 +92,20 @@
           <span class="fa fa-star-o" data-rating="3"></span>
           <span class="fa fa-star-o" data-rating="4"></span>
           <span class="fa fa-star-o" data-rating="5"></span>
-          <input type="hidden" name="rating" class="rating-value" value="3">
+          <input type="hidden" name="rating" class="rating-value" value="4" required>
       </div> <br>
-      <textarea class="form-control mx-4 " style="width: 1030px" name="content" id="komen" rows="3" placeholder="Tuliskan tentang obyek wisata ini"></textarea>
+      <textarea class="form-control mx-4 " style="width: 1030px" name="content" id="komen" rows="3" placeholder="Tuliskan tentang obyek wisata ini" required></textarea>
       <input type="hidden" name="place_id" value="{{$place->id}}"> <br>
       <button class="btn btn-primary float-right" style="margin-right: 30px" type="submit">Submit</button>
     </form>
+    @else 
+    <div class="mx-5 my-3">
+      <h4><b>Login</b> Untuk Memberi Ulasan</h4>
+      <a class="btn btn-success" href="{{ route('login') }}" style="font-size: 15px;">{{ __('Login') }}</a>
+    </div>
     @endif
   
-    <br><br><br><br>
+    <br><br><br>
 
     @foreach ($place->comments as $comment)
       <div class="card">

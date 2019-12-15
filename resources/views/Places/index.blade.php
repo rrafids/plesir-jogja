@@ -40,13 +40,17 @@
                 <br> <br>  
                 <ul class="list-inline" id="tabel">
                     @foreach($places as $place)
-                            <li class="list-inline-item my-3 mx-2">
+                            <li class="list-inline-item my-2 mx-2" style="height: 300px">
                                 <div class="card" style="width: 25rem">
-                                    <img src="/images/{{ $place['gambar'] }}" class="card-img" style="width: 350px; height: 300px;" alt="...">
-                                    <div class="card-body" style="margin-top: -150px; color: white">
-                                        <a href="/places/{{ $place->id }}" ><h2 style="color: white; font-weight: bold" class="card-img-top">{{ $place['nama'] }}</h2></a> <br>
-                                        <h4><b style="color: #A1DA9E">{{ $place->rating }}</b>/5</h4>
-                                        <br>
+                                    <div class="zoom-effect">
+                                        <div class="kotak">
+                                            <img src="/images/{{ $place['gambar'] }}" class="zoom" style="width: 350px; height: 300px;" alt="...">
+                                        </div>               
+                                    <div class="card-body" style="margin-top: -150px; color: white; position: absolute">
+                                        <a href="/places/{{ $place->id }}" >
+                                            <h2 style="color: white; font-weight: bold" class="card-img-top">{{ $place['nama'] }}</h2>
+                                            <b style="color: #A1DA9E; font-size: 25px">{{ $place->rating }}</b>/5
+                                        </a> <br>
                                         <a href="/places/{{ $place->id }}" class="btn btn-primary" style="margin-left: 220px">Lihat Detail</a>
                                     </div>
                                 </div>
@@ -56,6 +60,16 @@
             </div>
         </div>
     </div>
+
+    <script>
+            $(document).ready(function(){
+                $('.zoom').hover(function() {
+                    $(this).addClass('transisi');
+                }, function() {
+                    $(this).removeClass('transisi');
+                });
+            });  
+        </script>
 @endsection
 
 

@@ -71,6 +71,28 @@
     <!-- Styles -->
     <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
     <style>
+    .zoom-effect {  
+    width: 100%;
+    height: 360px;
+    margin: 0 auto;
+    overflow: hidden;  
+    }
+    
+    .kotak {
+    top: 0;
+    left: 0;
+    }
+    
+    .kotak img {
+    -webkit-transition: 0.4s ease;
+    transition: 0.4s ease;
+    width: 600px;
+    }
+    
+    .zoom-effect:hover .kotak img {
+    -webkit-transform: scale(1.08);
+    transform: scale(1.08);
+    }
     .star-rating {
         line-height:32px;
         font-size:2em;
