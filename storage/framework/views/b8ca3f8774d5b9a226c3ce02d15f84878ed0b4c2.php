@@ -85,7 +85,6 @@
         <i class="edit icon"></i>
         <b>Tulis Komentar</b>
       </label>
-      
       <br>
       <div class="star-rating"> 
           &nbsp;&nbsp;&nbsp;
@@ -94,15 +93,20 @@
           <span class="fa fa-star-o" data-rating="3"></span>
           <span class="fa fa-star-o" data-rating="4"></span>
           <span class="fa fa-star-o" data-rating="5"></span>
-          <input type="hidden" name="rating" class="rating-value" value="3">
+          <input type="hidden" name="rating" class="rating-value" value="4" required>
       </div> <br>
-      <textarea class="form-control mx-4 " style="width: 1030px" name="content" id="komen" rows="3" placeholder="Tuliskan tentang obyek wisata ini"></textarea>
+      <textarea class="form-control mx-4 " style="width: 1030px" name="content" id="komen" rows="3" placeholder="Tuliskan tentang obyek wisata ini" required></textarea>
       <input type="hidden" name="place_id" value="<?php echo e($place->id); ?>"> <br>
       <button class="btn btn-primary float-right" style="margin-right: 30px" type="submit">Submit</button>
     </form>
+    <?php else: ?> 
+    <div class="mx-5 my-3">
+      <h4><b>Login</b> Untuk Memberi Ulasan</h4>
+      <a class="btn btn-success" href="<?php echo e(route('login')); ?>" style="font-size: 15px;"><?php echo e(__('Login')); ?></a>
+    </div>
     <?php endif; ?>
   
-    <br><br><br><br>
+    <br><br><br>
 
     <?php $__currentLoopData = $place->comments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $comment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
       <div class="card">
