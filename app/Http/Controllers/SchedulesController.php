@@ -80,6 +80,8 @@ class SchedulesController extends Controller
                 'hourEnd' => $request->hourEnd,
         ]);
         }
+        session()->flash('notif', 'Jadwal Berhasil ditambahkan');
+
 
         return redirect()->route('schedules.index');
     }
@@ -145,6 +147,9 @@ class SchedulesController extends Controller
             $place->user_id   = auth()->id();
         }
         $place->save();
+
+        session()->flash('notif', 'Jadwal Berhasil diubah');
+
         return redirect()->route('schedules.index');
     }
 

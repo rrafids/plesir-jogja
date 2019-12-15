@@ -187,8 +187,41 @@
                     </li>
                 </ul>
             </div>
+            {{-- munculkan alert sukses --}}
+            <div class="lay ">
+                @if (session()->has('notif'))
+                    <div class="row" style="min-width:60%; min-height:30px">
+                        <div class="alert alert-success" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            {{session()->get('notif')}}
+                        </div>
+                    </div>
+                @endif
+            </div>
+            <div class="container" style="margin-left: 42%">
+                @if (session()->has('notifLogin'))
+                    <div class="row">
+                        <div class="alert alert-success" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            {{session()->get('notifLogin')}}
+                        </div>
+                    </div>
+                @endif
+            </div>
+
         </div>
         <br> <br> <br> <br>
+        <style>
+        .lay{
+            margin-left: 38%;
+            margin-top: 250px;
+            padding: 30px;
+            font-size: 30px;
+            font-family: 'Open Sans', sans-serif;
+
+        }
+        
+        </style>
 
         <main class="py-5" style="background-color: transparent">
             @yield('content')
