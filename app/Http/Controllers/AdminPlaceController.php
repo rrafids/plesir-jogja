@@ -114,6 +114,7 @@ class AdminPlaceController extends Controller
             'tempat_umum'   => $request->facl ,
             'gambar'    => $p
         ]);
+        session()->flash('notif', 'Destinasi Berhasil ditambah');
 
         return redirect()->route('adminPlaces.index');
 
@@ -205,6 +206,8 @@ class AdminPlaceController extends Controller
 
 
         $place->save();
+        session()->flash('notif', 'Destinasi Berhasil diubah');
+
         return redirect()->route('adminPlaces.index'); 
         
     }

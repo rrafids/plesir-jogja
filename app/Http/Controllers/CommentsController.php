@@ -59,6 +59,8 @@ class CommentsController extends Controller
         $place->reviews++;
 
         $place->save();
+
+        session()->flash('notif', 'Ulasan Berhasil ditambahkan');
         
         return redirect()->back();
     }

@@ -80,6 +80,8 @@ class AdminUserController extends Controller
         
         $user->update();
 
+        session()->flash('notif', 'Kedudukan Berhasil diubah');
+
         return redirect()->route('adminUsers.index');
         }
 

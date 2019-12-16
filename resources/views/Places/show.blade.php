@@ -96,7 +96,7 @@
       </div> <br>
       <textarea class="form-control mx-4 " style="width: 1030px" name="content" id="komen" rows="3" placeholder="Tuliskan tentang obyek wisata ini" required></textarea>
       <input type="hidden" name="place_id" value="{{$place->id}}"> <br>
-      <button class="btn btn-primary float-right" style="margin-right: 30px" type="submit">Submit</button>
+      <button class="btn btn-primary float-right" style="margin-right: 30px" type="submit" >Submit</button>
     </form>
     @else 
     <div class="mx-5 my-3">

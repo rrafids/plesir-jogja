@@ -100,6 +100,16 @@
                 </ul>
             </div>
         </div>
+        <div class="container" style="margin-left: 44%">
+            @if (session()->has('notif'))
+                <div class="row">
+                    <div class="alert alert-success" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        {{session()->get('notif')}}
+                    </div>
+                </div>
+            @endif
+        </div>
         
         <main class="py-4">
             @yield('content')
